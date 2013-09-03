@@ -4,6 +4,9 @@ source "https://rubygems.org"
 
 gemspec
 
+# No gem would be complete without rake tasks - http://rake.rubyforge.org/
+gem "rake", "~> 10.1"
+
 group :test do
   # Our preferred unit testing library - https://www.relishapp.com/rspec
   gem "rspec", "~> 2.13"
@@ -29,9 +32,6 @@ end
 group :guard do
   # A generic file system event handler; spin it up and see the tests fly
   gem "guard", "~> 1.8"
-
-  # Guard configuration to manage Gemfile updates
-  gem "guard-bundler", "~> 1.0"
 
   # Guard configuration to manage our spork drb environments
   gem "guard-spork", "~> 1.5"

@@ -1,10 +1,5 @@
 # encoding: utf-8
 
-guard "bundler" do
-  watch("Gemfile")
-  watch(/^.+\.gemspec/)
-end
-
 guard "spork", rspec_port: 2772 do
   watch("Gemfile")
   watch("Gemfile.lock")
