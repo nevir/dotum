@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 describe Dotum::AutoloadConvention, "#const_missing" do
 
   let(:namespace) {

@@ -12,7 +12,7 @@ if package_paths.size > 1
   package_paths.sort!
 
   # but only the outermost packages.
-  # 
+  #
   # Parent packages get to dictate how their children are loaded.
   filtered_paths = []
   prev_path = nil

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 namespace :spec do
 
   desc "Run tests with code coverage"
