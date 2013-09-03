@@ -9,7 +9,8 @@ namespace :spec do
     begin
       require "mutant"
     rescue LoadError
-      raise "Mutant isn't supported (or tested) on this Ruby implementation."
+      $stdout.puts "Mutant isn't supported (or tested) on this Ruby implementation."
+      next
     end
 
     if args.focus_on
