@@ -1,0 +1,6 @@
+{
+  "glob": ["lib/**/*.rb", "README.md"],
+  "strip": ["lib/", "lib/dotum/"],
+  "github": true,
+  "whitespace-after-token": false
+}

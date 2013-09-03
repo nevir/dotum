@@ -1,0 +1,44 @@
+# Default `use` Behavior
+# ======================
+
+
+# Package Loading
+# --------------
+# Any directories that contain a `rules.dotum` are `use`d.
+package_paths = package_dir.relative_glob("**/rules.dotum")
+package_paths.map! { |p| File.dirname(p) }
+
+if package_paths.size > 1
+  package_paths.sort!
+
+  # but only the outermost packages.
+  # 
+  # Parent packages get to dictate how their children are loaded.
+  filtered_paths = []
+  prev_path = nil
+  package_paths.each_with_index do |path, i|
+    next if prev_path && path.start_with?(prev_path)
+
+    prev_path = path
+    filtered_paths.push(path)
+  end
+
+  package_paths = filtered_paths
+end
+
+package_paths.each do |package_path|
+  use package_path
+end
+
+
+# Linking
+# -------
+# We link everything that doesn't fall under a package path.
+file_paths = package_dir.relative_glob("**/*", &:file?)
+file_paths.reject! { |file_path|
+  package_paths.any? { |package_path| file_path.start_with? package_path }
+}
+
+file_paths.each do |file_path|
+  link file_path
+end
