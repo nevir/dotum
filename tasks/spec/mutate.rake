@@ -54,6 +54,7 @@ namespace :spec do
   end
 
   def mutant_supported?
+    # uninitialized constant Mutant::Strategy::Rspec::StringIO
     return false if RUBY_VERSION.start_with?("1.9.2")
     # ambiguous option: --rspec
     return false if RUBY_ENGINE == "rbx"
