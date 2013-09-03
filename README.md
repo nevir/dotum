@@ -3,7 +3,6 @@ Dotum
 
 [![Gem Version](https://badge.fury.io/rb/dotum.png)](https://rubygems.org/gems/dotum)
 [![Build Status](https://secure.travis-ci.org/nevir/dotum.png?branch=master)](http://travis-ci.org/nevir/dotum)
-[![Dependency Status](https://gemnasium.com/nevir/dotum.png)](https://gemnasium.com/nevir/dotum)
 [![Coverage Status](https://coveralls.io/repos/nevir/dotum/badge.png?branch=master)](https://coveralls.io/r/nevir/dotum)
 [![Code Climate](https://codeclimate.com/github/nevir/dotum.png)](https://codeclimate.com/github/nevir/dotum)
 
