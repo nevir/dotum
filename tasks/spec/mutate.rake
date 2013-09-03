@@ -6,9 +6,8 @@ namespace :spec do
 
   desc "Runs tests with code mutation"
   task :mutate, [:focus_on] do |t, args|
-    begin
-      require "mutant"
-    rescue LoadError
+    # Skip known bad implementations for now.
+    unless mutant_supported?
       $stdout.puts "Mutant isn't supported (or tested) on this Ruby implementation."
       next
     end
@@ -52,6 +51,20 @@ namespace :spec do
         return "::#{match[1]}"
       end
     end
+  end
+
+  def mutant_supported?
+    return false if RUBY_VERSION.start_with?("1.9.2")
+    # ambiguous option: --rspec
+    return false if RUBY_ENGINE == "rbx"
+
+    begin
+      require "mutant"
+    rescue LoadError
+      return false
+    end
+
+    true
   end
 
 end
