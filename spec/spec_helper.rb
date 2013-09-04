@@ -74,7 +74,6 @@ Spork.each_run do
     if ENV["FULL_COVERAGE_RUN"]
       lib_root = File.join(PROJECT_ROOT, "lib")
       Dir["#{lib_root}/**/*.rb"].sort.each do |path|
-        puts path[(lib_root.size + 1)...-3]
         require path[(lib_root.size + 1)...-3]
       end
     end
