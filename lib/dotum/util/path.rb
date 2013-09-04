@@ -13,16 +13,9 @@ class Dotum::Util::Path
     @path = File.expand_path(path, relative)
   end
 
-  def join(*components)
-    (components.size - 1).downto(0) do |i|
-      # Do we have absolute paths?  Stop at the last one.
-      if components[i].to_str =~ ABSOLUTE_PATH_MATCHER
-        return self.class.new(File.join(components[i..-1]))
-      end
-    end
 
-    self.class.new(File.join(@path, components))
-  end
+  # Predicates
+  # ----------
 
   def exists?
     File.exist? @path
@@ -44,40 +37,17 @@ class Dotum::Util::Path
     File.split(@path).any? { |p| p.start_with? "." }
   end
 
+
+  # Metadata
+  # --------
+
   def link_path
-    self.class.new(File.readlink(@path))
+    self.class.new(File.readlink(@path), File.dirname(@path))
   end
 
-  def to_s
-    @path
-  end
 
-  def to_str
-    @path
-  end
-
-  def self.home_dir
-    @home_dir ||= File.expand_path("~")
-  end
-
-  def pretty
-    home_dir = File.expand_path("~")
-    if @path.start_with? home_dir
-      return "~" + @path[home_dir.size..-1]
-    end
-
-    @path
-  end
-
-  def read
-    File.read(@path)
-  end
-
-  def write(content)
-    File.open(@path, "w") do |file|
-      file.write(content)
-    end
-  end
+  # Composition
+  # -----------
 
   def dirname
     self.class.new(File.dirname(@path))
@@ -85,6 +55,17 @@ class Dotum::Util::Path
 
   def basename
     File.basename(@path)
+  end
+
+  def join(*components)
+    (components.size - 1).downto(0) do |i|
+      # Do we have absolute paths?  Stop at the last one.
+      if components[i].to_str =~ ABSOLUTE_PATH_MATCHER
+        return self.class.new(File.join(components[i..-1]))
+      end
+    end
+
+    self.class.new(File.join(@path, components))
   end
 
   def glob(expression, &filter)
@@ -109,12 +90,47 @@ class Dotum::Util::Path
     }
   end
 
-  def ==(other)
-    to_str == other.to_str
+
+  # Input/Output
+  # ------------
+
+  def read
+    File.read(@path)
+  end
+
+  def write(content)
+    File.open(@path, "w") do |file|
+      file.write(content)
+    end
   end
 
   def mkpath!
     FileUtils.mkpath(@path)
+  end
+
+
+  # Inspection
+  # ----------
+
+  def to_s
+    @path
+  end
+
+  def to_str
+    @path
+  end
+
+  def pretty
+    @@home_dir ||= File.expand_path("~")
+    if @path.start_with? @@home_dir
+      return "~" + @path[@@home_dir.size..-1]
+    end
+
+    @path
+  end
+
+  def ==(other)
+    to_str == other.to_str
   end
 
 end
