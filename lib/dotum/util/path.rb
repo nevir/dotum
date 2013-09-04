@@ -17,11 +17,11 @@ class Dotum::Util::Path
     (components.size - 1).downto(0) do |i|
       # Do we have absolute paths?  Stop at the last one.
       if components[i].to_str =~ ABSOLUTE_PATH_MATCHER
-        return self.class.new(File.join(*components[i..-1]))
+        return self.class.new(File.join(components[i..-1]))
       end
     end
 
-    self.class.new(File.join(@path, *components))
+    self.class.new(File.join(@path, components))
   end
 
   def exists?
