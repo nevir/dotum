@@ -143,7 +143,7 @@ class Dotum::Util::Path
   # ----------
 
   def <=>(other)
-    to_str <=> other
+    to_str <=> other.to_str
   end
 
 end
