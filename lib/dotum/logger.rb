@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class Dotum::Logger
-  include Dotum::Util::ANSIColors
+  include Dotum::Util::ANSIControl
 
   INDENT = "  "
 
