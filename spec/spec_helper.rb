@@ -18,6 +18,7 @@ end
 
 Spork.prefork do
   # Allow requires relative to the spec dir
+  PROJECT_ROOT = File.expand_path("../..", __FILE__)
   SPEC_ROOT    = File.expand_path("..", __FILE__)
   FIXTURE_ROOT = File.join(SPEC_ROOT, "fixtures")
   $LOAD_PATH << SPEC_ROOT
@@ -57,14 +58,25 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  # The rspec test runner executes the specs in a separate process; plus it's nice to have this
-  # generic flag for cases where you want coverage running with guard.
+  # The rspec test runner executes the specs in a separate process; plus it's
+  #nice to have this generic flag for cases where you want coverage running with
+  # guard.
   if ENV["COVERAGE"]
     require "simplecov"
 
     if ENV["CONTINUOUS_INTEGRATION"]
       require "coveralls"
       Coveralls.wear!
+    end
+
+    # Ensure accurate coverage by loading everything if we're going to be doing
+    # a full run.
+    if ENV["FULL_COVERAGE_RUN"]
+      lib_root = File.join(PROJECT_ROOT, "lib")
+      Dir["#{lib_root}/**/*.rb"].sort.each do |path|
+        puts path[(lib_root.size + 1)...-3]
+        require path[(lib_root.size + 1)...-3]
+      end
     end
   end
 
