@@ -42,7 +42,7 @@ namespace :spec do
       File.open(spec_path) do |spec_file|
         spec_target(spec_file)
       end
-    }
+    }.compact
   end
 
   def spec_target(spec_file)
@@ -50,6 +50,8 @@ namespace :spec do
       if match = SPEC_TARGET_MATCHER.match(line)
         return "::#{match[1]}#{match[2]}"
       end
+
+      return nil if spec_file.lineno > 10
     end
   end
 
