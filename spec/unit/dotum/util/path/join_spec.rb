@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-describe Dotum::Util::Path, "#initialize" do
+describe Dotum::Util::Path, "#join" do
 
   subject {
     described_class.new("base")
