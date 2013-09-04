@@ -19,7 +19,7 @@ namespace :spec do
     end
 
     ENV["MUTATION"] = "yes"
-    status = Mutant::CLI.run(["--rspec", "--code", "2e29e"] + matchers)
+    status = Mutant::CLI.run(["--rspec"] + matchers)
     ENV["MUTATION"] = nil
 
     # Don't fail the build until we get to the bottom of https://github.com/mbj/mutant/issues/106

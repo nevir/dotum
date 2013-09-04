@@ -32,7 +32,7 @@ describe Dotum::Util::Path, "#relative_glob" do
   end
 
   it "should use dot notation for paths that match up the tree" do
-    expect(subject.relative_glob("../*")).to match_array([".", "../file", "../symlink", "../abs_symlink"])
+    expect(subject.relative_glob("../*")).to match_array([".", "../file", "../symlink"])
   end
 
 end

@@ -3,10 +3,6 @@
 describe Dotum::Util::Path, "#link_path" do
   include_context "path fixtures"
 
-  it "should return the target path of an absolute symlink" do
-    expect(described_class.new(abs_symlink_fixture).link_path).to eq("/abs/path")
-  end
-
   it "should expand the target path of a relative symlink" do
     expect(described_class.new(symlink_fixture).link_path).to eq(file_fixture)
   end
