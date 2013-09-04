@@ -2,7 +2,7 @@
 
 namespace :spec do
 
-  SPEC_TARGET_MATCHER = /^describe\s+(Dotum::[:\w]+)/
+  SPEC_TARGET_MATCHER = /^describe\s+(Dotum::[:\w]+)(?:,\s*"([^"]+)")?/
 
   desc "Runs tests with code mutation"
   task :mutate, [:focus_on] do |t, args|
@@ -48,7 +48,7 @@ namespace :spec do
   def spec_target(spec_file)
     spec_file.each_line do |line|
       if match = SPEC_TARGET_MATCHER.match(line)
-        return "::#{match[1]}"
+        return "::#{match[1]}#{match[2]}"
       end
     end
   end
@@ -57,7 +57,7 @@ namespace :spec do
     # uninitialized constant Mutant::Strategy::Rspec::StringIO
     return false if RUBY_VERSION.start_with?("1.9.2")
     # ambiguous option: --rspec
-    return false if defined? RUBY_ENGINE && RUBY_ENGINE == "rbx"
+    return false if defined?(RUBY_ENGINE) && RUBY_ENGINE == "rbx"
 
     begin
       require "mutant"
