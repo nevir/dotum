@@ -1,0 +1,2 @@
+- 2e29e # Dotum::Util::Path#<=> - other.to_str (for Ruby 1.8)
+- 1b28e # Dotum::OptionsContext#initialize - @known_options = Set.new(...)

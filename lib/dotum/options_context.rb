@@ -12,7 +12,7 @@ class Dotum::OptionsContext < Hash
     super if args.size != 1
 
     unless @known_options.include? sym
-      raise ArgumentError, "Unknown option '#{sym}'"
+      raise NameError, "Unknown option '#{sym}'"
     end
 
     self[sym] = args[0]
