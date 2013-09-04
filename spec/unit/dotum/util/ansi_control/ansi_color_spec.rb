@@ -4,7 +4,7 @@ describe Dotum::Util::ANSIControl, "#ansi_color" do
 
   subject {
     Object.new.tap do |object|
-      object.singleton_class.send(:include, described_class)
+      (class << object; self; end).send(:include, described_class)
     end
   }
 
