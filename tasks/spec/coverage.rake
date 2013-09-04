@@ -18,7 +18,7 @@ namespace :spec do
 
     ensure
       ENV["FULL_COVERAGE_RUN"] = prev_full_run
-      ENV["COVERAGE"] = prev
+      ENV["COVERAGE"] = prev_coverage
     end
   end
 
