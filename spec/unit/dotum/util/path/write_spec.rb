@@ -1,0 +1,25 @@
+# encoding: utf-8
+
+require "tempfile"
+
+describe Dotum::Util::Path, "#write" do
+  include_context "path fixtures"
+
+  let(:tempfile) { Tempfile.new("writer") }
+
+  subject {
+    described_class.new(tempfile.path)
+  }
+
+  it "should write to a file" do
+    subject.write("ohai")
+    expect(subject.read).to eq("ohai")
+  end
+
+  it "should not append to a file" do
+    subject.write("one")
+    subject.write("two")
+    expect(subject.read).to eq("two")
+  end
+
+end

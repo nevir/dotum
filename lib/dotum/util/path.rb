@@ -1,9 +1,8 @@
 # encoding: utf-8
 
-require "fileutils"
-
 # **Very** similar to `Pathname`.
 class Dotum::Util::Path
+  include Comparable
 
   ABSOLUTE_PATH_MATCHER = /^(~?\/|\w+\:\\)/
 
@@ -71,10 +70,7 @@ class Dotum::Util::Path
   def glob(expression, &filter)
     matches = Dir.glob(join(expression), File::FNM_DOTMATCH)
 
-    if filter
-      matches.reject! { |p| !filter.call(self.class.new(p)) }
-    end
-
+    matches.reject! { |p| !filter.call(self.class.new(p)) } if filter
     matches.reject! { |path|
       basename = File.basename(path)
 
@@ -85,9 +81,26 @@ class Dotum::Util::Path
   end
 
   def relative_glob(expression, &filter)
-    glob(expression, &filter).map { |path|
-      path.to_str[(@path.size + 1)..-1] || "."
-    }
+    glob(expression, &filter).map { |p| p.relative_to(self) }
+  end
+
+  def relative_to(source)
+    source_str = source.to_str
+
+    return "." if @path == source_str
+
+    self_parts   = @path.split(File::Separator)
+    source_parts = source_str.split(File::Separator)
+
+    new_parts = []
+    self_parts.zip(source_parts) do |self_part, source_part|
+      next if self_part == source_part
+
+      new_parts.push(self_part)
+      new_parts.unshift("..") unless source_part.nil?
+    end
+
+    File.join(new_parts)
   end
 
 
@@ -102,10 +115,6 @@ class Dotum::Util::Path
     File.open(@path, "w") do |file|
       file.write(content)
     end
-  end
-
-  def mkpath!
-    FileUtils.mkpath(@path)
   end
 
 
@@ -129,8 +138,12 @@ class Dotum::Util::Path
     @path
   end
 
-  def ==(other)
-    to_str == other.to_str
+
+  # Comparison
+  # ----------
+
+  def <=>(other)
+    to_str <=> other
   end
 
 end

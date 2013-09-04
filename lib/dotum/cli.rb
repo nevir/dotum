@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require "fileutils"
+
 class Dotum::CLI
 
   def self.exec(args)
@@ -25,7 +27,7 @@ class Dotum::CLI
     unless @package_dir.directory?
       puts
       puts "#{@package_dir.pretty} doesn't exist!  Creating for now..."
-      @package_dir.mkpath!
+      FileUtils.mkpath(@package_dir)
     end
 
     Dotum::Rules::UseRepo.exec(context, @package_dir)
