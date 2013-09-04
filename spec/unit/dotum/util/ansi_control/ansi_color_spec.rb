@@ -17,7 +17,7 @@ describe Dotum::Util::ANSIControl, "#ansi_color" do
     color_methods  = described_class::COLORS.map { |c| :"c_#{c}" }
     color_methods += described_class::COLORS.map { |c| :"c_bright_#{c}" }
 
-    matching_methods = described_class.instance_methods & color_methods
+    matching_methods = described_class.instance_methods.map(&:to_sym) & color_methods
     expect(matching_methods).to match_array(color_methods)
   end
 
