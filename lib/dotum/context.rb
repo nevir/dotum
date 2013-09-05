@@ -2,8 +2,8 @@
 
 class Dotum::Context
 
-  def initialize(attributes={})
-    set_attributes(attributes)
+  def initialize(attributes=nil)
+    set_attributes(attributes || {})
   end
 
   attr_reader :package_dir
@@ -26,13 +26,13 @@ class Dotum::Context
     result
   end
 
-  def fork(new_attributes={})
+  def fork(new_attributes=nil)
     self.class.new(attributes.merge(new_attributes || {}))
   end
 
-  def child(new_attributes={})
+  def child(new_attributes=nil)
     new_attributes ||= {}
-    new_attributes[:depth] = (@depth || 0) + 1
+    new_attributes[:depth] = defined?(@depth) ? @depth + 1 : 1
 
     fork(new_attributes)
   end
@@ -43,13 +43,15 @@ private
     attributes.each_pair do |key, value|
       case key
       when :package_dir then @package_dir = Dotum::Util::Path.new(value)
-      when :target_dir then @target_dir = Dotum::Util::Path.new(value)
-      when :state_dir  then @state_dir  = Dotum::Util::Path.new(value)
-      when :logger     then @logger     = value
-      when :no_remote  then @no_remote  = value
-      when :depth      then @depth      = value
+      when :target_dir  then @target_dir  = Dotum::Util::Path.new(value)
+      when :state_dir   then @state_dir   = Dotum::Util::Path.new(value)
+      when :logger      then @logger      = value
+      when :no_remote   then @no_remote   = value
+      when :depth       then @depth       = value
       end
     end
+
+    @depth ||= 0
   end
 
 end
