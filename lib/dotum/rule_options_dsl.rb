@@ -50,13 +50,17 @@ module Dotum::RuleOptionsDSL
   # ------------------------
 
   def option_configs
-    @memoized_option_configs ||= ancestors.reverse_each.reduce({}) { |result, ancestor|
-      result.merge(ancestor.instance_variable_get(:@option_configs) || {})
+    ancestors.reverse_each.reduce({}) { |result, ancestor|
+      if ancestor.instance_variable_defined? :@option_configs
+        result.merge(ancestor.instance_variable_get(:@option_configs))
+      else
+        result
+      end
     }
   end
 
   def option_defaults
-    @memoized_option_defaults ||= {}.tap do |defaults|
+    {}.tap do |defaults|
       option_configs.each do |option, config|
         defaults[option] = config[:default] unless config[:default].nil?
       end
@@ -64,9 +68,11 @@ module Dotum::RuleOptionsDSL
   end
 
   def preprocessor_methods
-    @memoized_preprocessor_methods ||= ancestors.map { |ancestor|
-      ancestor.instance_variable_get(:@preprocessors)
-    }.compact.flatten
+    ancestors.map { |ancestor|
+      if ancestor.instance_variable_defined? :@preprocessors
+        ancestor.instance_variable_get(:@preprocessors)
+      end
+    }.compact.flatten.uniq
   end
 
   def shorthand_config

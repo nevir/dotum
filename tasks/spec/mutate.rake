@@ -64,7 +64,8 @@ namespace :spec do
 
     begin
       require "mutant"
-    rescue LoadError
+    rescue LoadError => err
+      $stderr.puts "Failed to load mutant: #{err}"
       return false
     end
 
