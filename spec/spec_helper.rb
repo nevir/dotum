@@ -43,16 +43,6 @@ Spork.prefork do
     config.around(:each) do |spec|
       timeout(0.5) { spec.run }
     end
-
-    # Be verbose about warnings
-    config.around(:each) do |spec|
-      old_verbose = $VERBOSE
-      $VERBOSE = 2
-
-      spec.run
-
-      $VERBOSE = old_verbose
-    end
   end
 end
 
@@ -76,10 +66,6 @@ Spork.each_run do
         require path[(lib_root.size + 1)...-3]
       end
     end
-  end
-
-  Dir[File.join(SPEC_ROOT, "global_hooks", "*.rb")].shuffle.each do |helper|
-    require "global_hooks/#{File.basename(helper, ".rb")}"
   end
 
   # Because we're an autoloading lib, just require the root up front.

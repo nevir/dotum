@@ -69,9 +69,7 @@ module Dotum::RuleOptionsDSL
 
   def preprocessor_methods
     ancestors.map { |ancestor|
-      if ancestor.instance_variable_defined? :@preprocessors
-        ancestor.instance_variable_get(:@preprocessors)
-      end
+      ancestor.instance_variable_get(:@preprocessors)
     }.compact.flatten.uniq
   end
 
