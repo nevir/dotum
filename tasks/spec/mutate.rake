@@ -6,6 +6,8 @@ namespace :spec do
 
   desc "Runs tests with code mutation"
   task :mutate, [:focus_on] do |t, args|
+    require "dotum"
+
     # Skip known bad implementations for now.
     unless mutant_supported?
       $stdout.puts "Mutant isn't supported (or tested) on this Ruby implementation."
