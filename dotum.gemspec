@@ -8,6 +8,7 @@ Gem::Specification.new do |gem|
   gem.authors     = ["Ian MacLeod"]
   gem.email       = ["ian@nevir.net"]
   gem.homepage    =  "https://github.com/nevir/dotum"
+  gem.license     =  "MIT"
 
   gem.version  = Dotum::VERSION
   gem.platform = Gem::Platform::RUBY
