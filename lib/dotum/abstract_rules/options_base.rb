@@ -22,10 +22,7 @@ class Dotum::AbstractRules::OptionsBase < Dotum::AbstractRules::Base
   def initialize(context, options)
     super(context)
 
-    options.each do |option, value|
-      filter = self.class.option_configs[option][:filter]
-      value = instance_exec(value, &filter) if filter && !value.nil?
-
+    self.class.process_options(options, self).each do |option, value|
       instance_variable_set(:"@#{option}", value)
     end
   end

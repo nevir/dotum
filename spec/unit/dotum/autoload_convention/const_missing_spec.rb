@@ -25,31 +25,31 @@ describe Dotum::AutoloadConvention, "#const_missing" do
   end
 
   it "should load single-token files" do
-    namespace.should_receive(:require).with("fixtures/autoload_convention/single").and_call_original
+    namespace.should_receive(:load).with("fixtures/autoload_convention/single.rb").and_call_original
 
     expect(namespace::Single).to eq(:single_and_stuff)
   end
 
   it "should load multi-token files" do
-    namespace.should_receive(:require).with("fixtures/autoload_convention/multi_token").and_call_original
+    namespace.should_receive(:load).with("fixtures/autoload_convention/multi_token.rb").and_call_original
 
     expect(namespace::MultiToken).to eq(:multi)
   end
 
   it "shouldn't split ACRONYMS" do
-    namespace.should_receive(:require).with("fixtures/autoload_convention/allcaps").and_call_original
+    namespace.should_receive(:load).with("fixtures/autoload_convention/allcaps.rb").and_call_original
 
     expect(namespace::ALLCAPS).to eq(:yelling)
   end
 
   it "should split ACRONYMSEndingWithRegularNames" do
-    namespace.should_receive(:require).with("fixtures/autoload_convention/abc_one_two_three").and_call_original
+    namespace.should_receive(:load).with("fixtures/autoload_convention/abc_one_two_three.rb").and_call_original
 
     expect(namespace::ABCOneTwoThree).to eq(:you_can_count!)
   end
 
   it "shouldn't pick up constants in parent namespaces" do
-    namespace.should_receive(:require).with("fixtures/autoload_convention/string").and_call_original
+    namespace.should_receive(:load).with("fixtures/autoload_convention/string.rb").and_call_original
 
     expect(namespace::String).to eq("I am a string!")
   end

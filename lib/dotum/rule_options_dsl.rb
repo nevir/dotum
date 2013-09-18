@@ -9,7 +9,7 @@ module Dotum::RuleOptionsDSL
   # ---
 
   def shorthand(*args)
-    @shorthand_config ||= args
+    @shorthand_config = args
   end
 
   def required(option, &block)
@@ -24,12 +24,12 @@ module Dotum::RuleOptionsDSL
   end
 
   def standard(option)
-    option_module_name = option.to_s.split("_").map(&:capitalize).join.to_sym
+    option_module_name = option.to_s.split("_").map(&:capitalize).join
 
     begin
       option_module = Dotum::StandardOptions.const_get(option_module_name)
     rescue LoadError
-      raise "Unknown standard option '#{option}'.  Tried to load Dotum::StandardOptions::#{option_module_name}: #{$!.message}"
+      raise ArgumentError, "Unknown standard option '#{option}'.  Tried to load Dotum::StandardOptions::#{option_module_name}: #{$!}"
     end
 
     module_configs = option_module.instance_variable_get(:@option_configs)
@@ -95,6 +95,7 @@ module Dotum::RuleOptionsDSL
       end
     end
 
+    result.reject! { |_,v| v.nil? }
     result
   end
 
@@ -103,6 +104,22 @@ module Dotum::RuleOptionsDSL
     options.instance_eval(&block)
 
     options
+  end
+
+  def process_options(options, context=nil)
+    result = options.dup
+    options.each do |option, value|
+      next if value.nil?
+      next unless filter = option_configs[option][:filter]
+
+      if context
+        result[option] = context.instance_exec(value, &filter)
+      else
+        result[option] = filter.call(value)
+      end
+    end
+
+    result
   end
 
   def validate_options(options)

@@ -23,7 +23,7 @@ module Dotum
         part.downcase
       }
 
-      require File.join(path_parts)
+      load "#{File.join(path_parts)}.rb"
 
       # Make sure that we don't get stuck in an endless loop.  `const_get` calls
       # into `const_missing`, so we can't use that.

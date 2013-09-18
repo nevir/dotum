@@ -14,6 +14,9 @@ group :test do
   # The preferred code mutation library.
   gem "mutant", "~> 0.3.rc", :platforms => [:ruby_19, :ruby_20]
 
+  # Temporary until mutant depends on 0.1.3+
+  gem "unparser", ">= 0.1.3"
+
   # Cover all the things - https://github.com/colszowka/simplecov
   gem "simplecov", "~> 0.7"
 
