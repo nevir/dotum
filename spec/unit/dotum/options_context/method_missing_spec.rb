@@ -19,7 +19,7 @@ describe Dotum::OptionsContext, "#method_missing" do
   end
 
   it "should freak out if you try to set a non-option" do
-    expect { subject.three(123) }.to raise_error(NameError, "Unknown option 'three'")
+    expect { subject.three(123) }.to raise_error(NameError, /three/)
   end
 
 end

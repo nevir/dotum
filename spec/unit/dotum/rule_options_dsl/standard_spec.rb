@@ -37,7 +37,7 @@ describe Dotum::RuleOptionsDSL, "#standard" do
       base_class.class_eval do
         standard :missing_option
       end
-    }.to raise_error(ArgumentError, "Unknown standard option 'missing_option'.  Tried to load Dotum::StandardOptions::MissingOption: cannot load such file -- dotum/standard_options/missing_option.rb")
+    }.to raise_error(ArgumentError, /Dotum::StandardOptions::MissingOption/)
   end
 
   it "should raise a LoadError for modules that define the wrong option" do
@@ -51,7 +51,7 @@ describe Dotum::RuleOptionsDSL, "#standard" do
         base_class.class_eval do
           standard :some_option
         end
-      }.to raise_error("Dotum::StandardOptions::SomeOption is misconfigured; expected it to define the option 'some_option'")
+      }.to raise_error(/Dotum::StandardOptions::SomeOption/)
     ensure
       Dotum::StandardOptions.send(:remove_const, :SomeOption)
     end
@@ -67,7 +67,7 @@ describe Dotum::RuleOptionsDSL, "#standard" do
         base_class.class_eval do
           standard :some_option
         end
-      }.to raise_error("Dotum::StandardOptions::SomeOption is misconfigured; expected it to define the option 'some_option'")
+      }.to raise_error(/Dotum::StandardOptions::SomeOption/)
     ensure
       Dotum::StandardOptions.send(:remove_const, :SomeOption)
     end
