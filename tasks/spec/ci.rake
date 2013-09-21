@@ -8,7 +8,6 @@ namespace :spec do
     ENV["CONTINUOUS_INTEGRATION"] = "yes"
 
     Rake::Task["spec:coverage"].execute
-    Rake::Task["spec:mutate"].execute
 
     ENV["CONTINUOUS_INTEGRATION"] = prev
   end
