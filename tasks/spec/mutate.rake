@@ -17,7 +17,7 @@ namespace :spec do
     if args.focus_on
       matchers = matcher_for_focus(args.focus_on)
     else
-      matchers = all_matchers
+      matchers = ["::Dotum*"]
     end
 
     ENV["MUTATION"] = "yes"
@@ -35,26 +35,6 @@ namespace :spec do
     # Or regular constant?
     else
       return ["::Dotum::#{focus}"]
-    end
-  end
-
-  def all_matchers
-    # We can't just take a path and re-capitalize it.  It might be an acronym,
-    # like ANSIColors.
-    Dir["spec/unit/**/*_spec.rb"].map { |spec_path|
-      File.open(spec_path) do |spec_file|
-        spec_target(spec_file)
-      end
-    }.compact
-  end
-
-  def spec_target(spec_file)
-    spec_file.each_line do |line|
-      if match = SPEC_TARGET_MATCHER.match(line)
-        return "::#{match[1]}#{match[2]}"
-      end
-
-      return nil if spec_file.lineno > 10
     end
   end
 
