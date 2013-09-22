@@ -49,16 +49,6 @@ module Dotum::RuleOptionsDSL
   # Configuration Management
   # ------------------------
 
-  def option_configs
-    ancestors.reverse_each.reduce({}) { |result, ancestor|
-      if ancestor.instance_variable_defined? :@option_configs
-        result.merge(ancestor.instance_variable_get(:@option_configs))
-      else
-        result
-      end
-    }
-  end
-
   def option_defaults
     {}.tap do |defaults|
       option_configs.each do |option, config|
@@ -71,13 +61,6 @@ module Dotum::RuleOptionsDSL
     ancestors.map { |ancestor|
       ancestor.instance_variable_get(:@preprocessors)
     }.compact.flatten.uniq
-  end
-
-  def shorthand_config
-    return @shorthand_config if defined? @shorthand_config
-    return superclass.shorthand_config if superclass.respond_to? :shorthand_config
-
-    []
   end
 
   def expand_shorthand(*args)
@@ -110,13 +93,9 @@ module Dotum::RuleOptionsDSL
     result = options.dup
     options.each do |option, value|
       next if value.nil?
-      next unless filter = option_configs[option][:filter]
+      next unless filter = option_configs.fetch(option, {})[:filter]
 
-      if context
-        result[option] = context.instance_exec(value, &filter)
-      else
-        result[option] = filter.call(value)
-      end
+      result[option] = context.instance_exec(value, &filter)
     end
 
     result
@@ -131,7 +110,28 @@ module Dotum::RuleOptionsDSL
       errors.push(error)
     end
 
-    errors.size > 0 ? errors : nil
+    errors if errors.size > 0
+  end
+
+
+  # Implementation Details
+  # ----------------------
+
+  def option_configs
+    ancestors.reverse_each.reduce({}) { |result, ancestor|
+      if ancestor.instance_variable_defined? :@option_configs
+        result.merge(ancestor.instance_variable_get(:@option_configs))
+      else
+        result
+      end
+    }
+  end
+
+  def shorthand_config
+    return @shorthand_config if defined? @shorthand_config
+    return superclass.shorthand_config if superclass.respond_to? :shorthand_config
+
+    []
   end
 
 end
