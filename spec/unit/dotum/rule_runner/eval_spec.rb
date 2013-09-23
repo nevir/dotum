@@ -17,7 +17,7 @@ describe Dotum::RuleRunner, ".eval" do
     begin
       described_class.eval(nil, "raise 'foo'", "FILE", 123)
     rescue RuntimeError => error
-      expect(error.backtrace.first).to eq("FILE:123:in `eval'")
+      expect(error.backtrace.first).to match(/FILE:123.*eval/)
     end
   end
 
