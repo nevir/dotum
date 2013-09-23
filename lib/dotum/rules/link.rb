@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::Rules::Link < Dotum::AbstractRules::GlobbableFiles
 
 private

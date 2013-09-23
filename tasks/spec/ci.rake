@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 namespace :spec do
 
   desc "Run the tests in CI mode"

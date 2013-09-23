@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Dotum::StandardOptions::Destination
   extend Dotum::RuleOptionsDSL
 

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::RuleRunner, ".eval" do
 
   it "should return the result of the eval'd block" do

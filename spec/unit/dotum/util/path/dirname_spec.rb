@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#dirname" do
 
   it "should return the directory name of a path" do

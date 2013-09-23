@@ -1,6 +1,4 @@
 #!/usr/bin/env rake
-# encoding: utf-8
-
 require "bundler/gem_tasks"
 
 PROJECT_ROOT = File.expand_path("..", __FILE__)

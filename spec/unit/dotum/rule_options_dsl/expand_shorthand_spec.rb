@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::RuleOptionsDSL, "#expand_shorthand" do
   include_context "options DSL"
 

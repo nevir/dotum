@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::AbstractRules::Base
   extend Dotum::RuleOptionsDSL
   include Dotum::RuleDSL

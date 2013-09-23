@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::RuleRunner do
 
   it "should include the rule DSL" do

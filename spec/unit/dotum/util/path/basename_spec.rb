@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#basename" do
 
   it "should return the file name of a path" do

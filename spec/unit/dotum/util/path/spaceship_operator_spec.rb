@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#<=>" do
 
   subject { described_class.new("b") }

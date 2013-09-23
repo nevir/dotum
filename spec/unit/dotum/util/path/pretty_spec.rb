@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#pretty" do
 
   it "should collapse paths referencing the home dir" do

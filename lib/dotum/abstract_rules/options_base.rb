@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::AbstractRules::OptionsBase < Dotum::AbstractRules::Base
 
   def self.exec(context, *args, &block)

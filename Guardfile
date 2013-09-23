@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 guard "spork", rspec_port: 2772 do
   watch("Gemfile")
   watch("Gemfile.lock")

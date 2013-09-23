@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require "tempfile"
 
 describe Dotum::Util::Path, "#write" do

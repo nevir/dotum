@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 namespace :spec do
 
   SPEC_TARGET_MATCHER = /^describe\s+(Dotum::[:\w]+)(?:,\s*"([^"]+)")?/

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 begin
   require "spork"
   require "spork/ext/ruby-debug"

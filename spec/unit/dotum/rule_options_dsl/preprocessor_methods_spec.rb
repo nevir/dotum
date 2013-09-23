@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::RuleOptionsDSL, "#preprocessor_methods" do
   include_context "options DSL"
 

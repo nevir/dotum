@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#directory?" do
   include_context "path fixtures"
 

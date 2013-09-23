@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 desc "Boot up a console w/ Dotum preloaded"
 task :console do
   require "dotum"

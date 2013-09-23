@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require "uri"
 
 class Dotum::Rules::RequireExtension < Dotum::AbstractRules::OptionsBase

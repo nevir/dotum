@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # Autoload Convention
 # ===================
 # We adhere to a strict convention for the constants in this library:

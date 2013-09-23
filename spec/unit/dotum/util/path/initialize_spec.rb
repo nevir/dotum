@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#initialize" do
 
   it "should normalize separators" do

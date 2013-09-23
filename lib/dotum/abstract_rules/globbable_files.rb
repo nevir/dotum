@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
 
   GLOB_MATCHER = /\*/

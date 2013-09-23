@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 SimpleCov.start do
   add_filter "/spec/"
   add_filter "lib/dotum/externs/"

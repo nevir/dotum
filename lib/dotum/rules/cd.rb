@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::Rules::Cd < Dotum::AbstractRules::Base
 
   # Special case; we don't accept an options block.

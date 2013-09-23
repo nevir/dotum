@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Dotum::Util::ANSIControl
 
   COLORS = [:black, :red, :green, :yellow, :blue, :magenta, :cyan, :white]

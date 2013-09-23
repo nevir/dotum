@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::RuleOptionsDSL, "#eval_options_block" do
   include_context "options DSL"
 

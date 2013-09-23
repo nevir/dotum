@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::ANSIControl, "#ansi_color" do
 
   subject {

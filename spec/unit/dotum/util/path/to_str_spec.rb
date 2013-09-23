@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#to_str" do
 
   it "should return the string form of the path" do

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::Rules::Use < Dotum::AbstractRules::OptionsBase
 
   shorthand :path

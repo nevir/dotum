@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::Context
 
   def initialize(attributes=nil)

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#hidden?" do
 
   it "should treat dotfiles as hidden" do

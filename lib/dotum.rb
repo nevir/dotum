@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require "dotum/autoload_convention"
 
 module Dotum

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Dotum::RuleOptionsDSL
 
   OptionConfig = Struct.new(:filter, :validator, :default)

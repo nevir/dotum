@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
 
   shorthand :repo_uri => :destination

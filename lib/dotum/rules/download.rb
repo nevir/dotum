@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Dotum::Rules::Download < Dotum::AbstractRules::OptionsBase
 
   shorthand :uri => :destination

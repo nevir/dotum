@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Context, "#initialize" do
 
   it "should coerce paths" do

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#symlink?" do
   include_context "path fixtures"
 

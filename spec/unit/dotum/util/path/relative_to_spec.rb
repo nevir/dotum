@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Util::Path, "#relative_to" do
 
   it "should chop off common ancestry" do

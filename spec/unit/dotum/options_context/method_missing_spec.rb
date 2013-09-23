@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::OptionsContext, "#method_missing" do
 
   subject {

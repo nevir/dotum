@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 describe Dotum::Context, "#fork" do
 
   subject {

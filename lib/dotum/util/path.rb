@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # **Very** similar to `Pathname`.
 class Dotum::Util::Path
   include Comparable
