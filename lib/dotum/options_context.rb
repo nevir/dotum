@@ -1,5 +1,3 @@
-require "set"
-
 class Dotum::OptionsContext < Hash
 
   def initialize(option_configs)
@@ -9,9 +7,7 @@ class Dotum::OptionsContext < Hash
   def method_missing(sym, *args)
     super if args.size != 1
 
-    unless @known_options.include? sym
-      raise NameError, "Unknown option '#{sym}'"
-    end
+    fail NameError, "Unknown option '#{sym}'" unless @known_options.include? sym
 
     self[sym] = args[0]
   end

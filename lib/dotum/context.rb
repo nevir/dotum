@@ -1,7 +1,9 @@
 class Dotum::Context
 
-  def initialize(attributes=nil)
+  def initialize(attributes = nil)
     set_attributes(attributes || {})
+
+    @depth ||= 0
   end
 
   attr_reader :package_dir
@@ -24,18 +26,18 @@ class Dotum::Context
     result
   end
 
-  def fork(new_attributes=nil)
+  def fork(new_attributes = nil)
     self.class.new(attributes.merge(new_attributes || {}))
   end
 
-  def child(new_attributes=nil)
+  def child(new_attributes = nil)
     new_attributes ||= {}
     new_attributes[:depth] = defined?(@depth) ? @depth + 1 : 1
 
     fork(new_attributes)
   end
 
-private
+  private
 
   def set_attributes(attributes)
     attributes.each_pair do |key, value|
@@ -48,8 +50,6 @@ private
       when :depth       then @depth       = value
       end
     end
-
-    @depth ||= 0
   end
 
 end

@@ -1,4 +1,4 @@
-require "fileutils"
+require 'fileutils'
 
 class Dotum::CLI
 
@@ -9,9 +9,9 @@ class Dotum::CLI
   def initialize(args)
     @args = args
 
-    @state_dir  = Dotum::Util::Path.new("~/.dotum")
-    @target_dir = Dotum::Util::Path.new("~")
-    @package_dir = Dotum::Util::Path.new("~/.dotum/local")
+    @state_dir   = Dotum::Util::Path.new('~/.dotum')
+    @target_dir  = Dotum::Util::Path.new('~')
+    @package_dir = Dotum::Util::Path.new('~/.dotum/local')
   end
 
   def exec!

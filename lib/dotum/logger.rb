@@ -1,7 +1,7 @@
 class Dotum::Logger
   include Dotum::Util::ANSIControl
 
-  INDENT = "  "
+  INDENT = '  '
 
   def start_rule(rule)
     @last_rule       = rule
@@ -15,7 +15,7 @@ class Dotum::Logger
     message = "#{rule_line(rule)} - #{status.inspect} - #{reason.inspect}"
     if @last_rule == rule
       delta = (Time.now - @last_rule_start) * 1000.0
-      message += " (%.2fms)" % delta
+      message += sprintf(' (%.2fms)', delta)
 
       print "\r"
     else
@@ -25,7 +25,7 @@ class Dotum::Logger
     print message
   end
 
-private
+  private
 
   def rule_line(rule)
     indent  = INDENT * rule.context.depth

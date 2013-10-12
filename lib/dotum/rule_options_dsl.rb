@@ -2,7 +2,6 @@ module Dotum::RuleOptionsDSL
 
   OptionConfig = Struct.new(:filter, :validator, :default)
 
-
   # DSL
   # ---
 
@@ -22,17 +21,17 @@ module Dotum::RuleOptionsDSL
   end
 
   def standard(option)
-    option_module_name = option.to_s.split("_").map(&:capitalize).join
+    option_module_name = option.to_s.split('_').map(&:capitalize).join
 
     begin
       option_module = Dotum::StandardOptions.const_get(option_module_name)
     rescue LoadError
-      raise ArgumentError, "Unknown standard option '#{option}'.  Tried to load Dotum::StandardOptions::#{option_module_name}: #{$!}"
+      raise ArgumentError, "Unknown standard option '#{option}'.  Tried to load Dotum::StandardOptions::#{option_module_name}: #{$ERROR_INFO}"
     end
 
     module_configs = option_module.instance_variable_get(:@option_configs)
     unless module_configs && module_configs[option]
-      raise "Dotum::StandardOptions::#{option_module_name} is misconfigured; expected it to define the option '#{option}'"
+      fail "Dotum::StandardOptions::#{option_module_name} is misconfigured; expected it to define the option '#{option}'"
     end
 
     include option_module
@@ -56,9 +55,9 @@ module Dotum::RuleOptionsDSL
   end
 
   def preprocessor_methods
-    ancestors.map { |ancestor|
+    ancestors.map do |ancestor|
       ancestor.instance_variable_get(:@preprocessors)
-    }.compact.flatten.uniq
+    end.compact.flatten.uniq
   end
 
   def expand_shorthand(*args)
@@ -116,13 +115,13 @@ module Dotum::RuleOptionsDSL
   # ----------------------
 
   def option_configs
-    ancestors.reverse_each.reduce({}) { |result, ancestor|
+    ancestors.reverse_each.reduce({}) do |result, ancestor|
       if ancestor.instance_variable_defined? :@option_configs
         result.merge(ancestor.instance_variable_get(:@option_configs))
       else
         result
       end
-    }
+    end
   end
 
   def shorthand_config

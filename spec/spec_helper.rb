@@ -24,6 +24,9 @@ Spork.prefork do
   require "rspec"
   require "timeout"
 
+  # Namespace to throw fixtures under, as desired.
+  module Fixtures; end
+
   # Load our spec environment (random to avoid dependency ordering)
   Dir[File.join(SPEC_ROOT, "common", "*.rb")].shuffle.each do |helper|
     require "common/#{File.basename(helper, ".rb")}"
