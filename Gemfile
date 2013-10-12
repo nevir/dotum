@@ -7,7 +7,7 @@ gem "rake", "~> 10.1"
 
 group :test do
   # Our preferred unit testing library - https://www.relishapp.com/rspec
-  gem "rspec", "~> 2.13"
+  gem "rspec", "~> 2.14"
 
   # The preferred code mutation library.
   gem "mutant", "~> 0.3.rc", :platforms => [:ruby_19, :ruby_20]
@@ -19,7 +19,7 @@ group :test do
   gem "simplecov", "~> 0.7"
 
   # Code coverage in badge form - https://coveralls.io/
-  gem "coveralls", "~> 0.6"
+  gem "coveralls", "~> 0.7"
 end
 
 group :debugging do
@@ -32,13 +32,13 @@ end
 
 group :guard do
   # A generic file system event handler; spin it up and see the tests fly
-  gem "guard", "~> 1.8"
+  gem "guard", "~> 2.0"
 
   # Guard configuration to manage our spork drb environments
   gem "guard-spork", "~> 1.5"
 
   # Guard configuration & hooks for rspec
-  gem "guard-rspec", "~> 3.0"
+  gem "guard-rspec", "~> 4.0"
 
   # File system event hooks for OS X
   gem "rb-fsevent", "~> 0.9"

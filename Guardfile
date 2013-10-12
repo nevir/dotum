@@ -18,7 +18,7 @@ def specs_for_path(path)
   ["spec/unit/#{path}_spec.rb", Dir["spec/unit/#{path}/**/*_spec.rb"]].flatten
 end
 
-guard "rspec", cli: "--drb --drb-port 2772" do
+guard "rspec", cmd: "rspec --drb --drb-port 2772" do
   watch("lib/dotum.rb") { "spec" }
   watch("lib/dotum/autoload_convention.rb") { "spec" }
   watch(%r{^spec/fixtures/.*\.rb$}) { "spec" }
