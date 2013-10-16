@@ -1,4 +1,4 @@
-require "rbconfig"
+require 'rbconfig'
 
 module Dotum::RuleDSL
 
@@ -15,7 +15,7 @@ module Dotum::RuleDSL
   end
 
   def platform?(name)
-    os = RbConfig::CONFIG["host_os"].downcase
+    os = RbConfig::CONFIG['host_os'].downcase
 
     case name
     when /os\s?x/i     then /mac|darwin/      === os
@@ -27,7 +27,7 @@ module Dotum::RuleDSL
       if name.is_a? Regexp
         name === os
       else
-        Regexp.new(name, "i") === os
+        Regexp.new(name, 'i') === os
       end
     end
   end
@@ -56,7 +56,8 @@ module Dotum::RuleDSL
     begin
       rule_class = Dotum::Rules.const_get(rule_class_name)
     rescue LoadError
-      raise NoMethodError, "Unknown rule #{sym}.  Tried to load Dotum::Rules::#{rule_class_name}: #{$!.message}"
+      details = "Tried to load Dotum::Rules::#{rule_class_name}: #{$ERROR_INFO}"
+      raise NoMethodError, "Unknown rule #{sym}. #{details}"
     end
 
     Dotum::RuleDSL.module_eval <<-end_eval, __FILE__, __LINE__
