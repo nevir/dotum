@@ -8,7 +8,9 @@ namespace :test do
 
     # Skip known bad implementations for now.
     unless mutant_supported?
-      $stdout.puts "Mutant isn't supported (or tested) on this Ruby implementation."
+      $stdout.puts(
+        "Mutant isn't supported (or tested) on this Ruby implementation."
+      )
       next
     end
 
@@ -19,10 +21,11 @@ namespace :test do
     end
 
     ENV['MUTATION'] = 'yes'
-    status = Mutant::CLI.run(['--rspec'] + matchers)
+    Mutant::CLI.run(['--rspec'] + matchers)
     ENV['MUTATION'] = nil
 
-    # Don't fail the build until we get to the bottom of https://github.com/mbj/mutant/issues/106
+    # Don't fail the build until we get to the bottom of
+    # https://github.com/mbj/mutant/issues/106
     # raise "Mutation failed." if status > 0
   end
 
