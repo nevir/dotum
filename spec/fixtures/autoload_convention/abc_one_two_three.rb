@@ -1,3 +1,3 @@
 module Fixtures::AutoloadConvention
-  ABCOneTwoThree = :you_can_count!
+  class ABCOneTwoThree; end
 end

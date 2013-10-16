@@ -1,3 +1,3 @@
 module Fixtures::AutoloadConvention
-  String = 'I am a string!'
+  class String; end
 end

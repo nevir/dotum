@@ -1,3 +1,3 @@
 module Fixtures::AutoloadConvention
-  MultiToken = :multi
+  class MultiToken; end
 end

@@ -49,8 +49,8 @@ end
 
 Spork.each_run do
   # The rspec test runner executes the specs in a separate process; plus it's
-  #nice to have this generic flag for cases where you want coverage running with
-  # guard.
+  # nice to have this generic flag for cases where you want coverage running
+  # with guard.
   if ENV['COVERAGE']
     require 'simplecov'
 
@@ -74,4 +74,3 @@ Spork.each_run do
   # Must be loaded _after_ `simplecov`, otherwise it won't pick up on requires.
   require 'dotum'
 end
-
