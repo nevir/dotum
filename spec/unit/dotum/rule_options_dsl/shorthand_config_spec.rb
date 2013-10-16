@@ -1,7 +1,7 @@
-describe Dotum::RuleOptionsDSL, "#shorthand_config" do
-  include_context "options DSL"
+describe Dotum::RuleOptionsDSL, '#shorthand_config' do
+  include_context 'options DSL'
 
-  it "should inherit a shorthand from its parent" do
+  it 'should inherit a shorthand from its parent' do
     base_class.class_eval do
       shorthand :base, :shorthand
     end
@@ -9,7 +9,7 @@ describe Dotum::RuleOptionsDSL, "#shorthand_config" do
     expect(child_class.shorthand_config).to match_array([:base, :shorthand])
   end
 
-  it "should override values from its parent" do
+  it 'should override values from its parent' do
     base_class.class_eval do
       shorthand :base, :shorthand
     end
@@ -22,7 +22,7 @@ describe Dotum::RuleOptionsDSL, "#shorthand_config" do
     expect(base_class.shorthand_config).to match_array([:base, :shorthand])
   end
 
-  it "should return an empty config if nothing is registered" do
+  it 'should return an empty config if nothing is registered' do
     expect(base_class.shorthand_config).to eq([])
   end
 

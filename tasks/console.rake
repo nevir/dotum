@@ -1,7 +1,7 @@
-desc "Boot up a console w/ Dotum preloaded"
+desc 'Boot up a console w/ Dotum preloaded'
 task :console do
-  require "dotum"
-  require "pry"
+  require 'dotum'
+  require 'pry'
 
   Pry.start
 end

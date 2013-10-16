@@ -31,7 +31,7 @@ class Dotum::Util::Path
   end
 
   def hidden?
-    File.split(@path).any? { |p| p.start_with? "." }
+    File.split(@path).any? { |p| p.start_with? '.' }
   end
 
 
@@ -72,7 +72,7 @@ class Dotum::Util::Path
     matches.reject! { |path|
       basename = File.basename(path)
 
-      basename == "." || basename == ".."
+      basename == '.' || basename == '..'
     }
 
     matches.map { |p| self.class.new(p) }
@@ -85,7 +85,7 @@ class Dotum::Util::Path
   def relative_to(source)
     source_str = source.to_str
 
-    return "." if @path == source_str
+    return '.' if @path == source_str
 
     self_parts   = @path.split(File::Separator)
     source_parts = source_str.split(File::Separator)
@@ -95,7 +95,7 @@ class Dotum::Util::Path
       next if self_part == source_part
 
       new_parts.push(self_part)
-      new_parts.unshift("..") unless source_part.nil?
+      new_parts.unshift('..') unless source_part.nil?
     end
 
     File.join(new_parts)
@@ -110,7 +110,7 @@ class Dotum::Util::Path
   end
 
   def write(content)
-    File.open(@path, "w") do |file|
+    File.open(@path, 'w') do |file|
       file.write(content)
     end
   end
@@ -128,9 +128,9 @@ class Dotum::Util::Path
   end
 
   def pretty
-    @@home_dir ||= File.expand_path("~")
+    @@home_dir ||= File.expand_path('~')
     if @path.start_with? @@home_dir
-      return "~" + @path[@@home_dir.size..-1]
+      return '~' + @path[@@home_dir.size..-1]
     end
 
     @path

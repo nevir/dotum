@@ -20,11 +20,11 @@ private
     end
 
     # TODO: ETag support!
-    run "curl", "--output", @destination, @uri
+    run 'curl', '--output', @destination, @uri
 
-    run "chmod", @mode, @destination  if @mode
-    run "chown", @owner, @destination if @owner
-    run "chgrp", @group, @destination if @group
+    run 'chmod', @mode, @destination  if @mode
+    run 'chown', @owner, @destination if @owner
+    run 'chgrp', @group, @destination if @group
   end
 
 end

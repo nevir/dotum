@@ -16,13 +16,13 @@ private
 
   def execute
     @destination ||= default_destination
-    @repo_exists = @destination.join(".git").directory?
+    @repo_exists = @destination.join('.git').directory?
 
     if !is_local? && context.no_remote?
       if @repo_exists
-        skip! "Remote interactions are disabled."
+        skip! 'Remote interactions are disabled.'
       else
-        failure! "Remote interactions are disabled; cannot clone!"
+        failure! 'Remote interactions are disabled; cannot clone!'
       end
     end
 
@@ -34,8 +34,8 @@ private
   end
 
   def clone_repo
-    command = ["git", "clone"]
-    command += ["--branch", @branch] if @branch
+    command = ['git', 'clone']
+    command += ['--branch', @branch] if @branch
     command += [@repo_uri, @destination]
 
     run *command
@@ -43,21 +43,21 @@ private
 
   def update_repo
     cd @destination do
-      run "git", "add", "--all"
-      run "git", "commit", "--quiet", "--allow-empty", "--message", "Temporary Dotum Commit"
-      run "git", "pull", "--rebase"
-      run "git", "reset", "HEAD^"
+      run 'git', 'add', '--all'
+      run 'git', 'commit', '--quiet', '--allow-empty', '--message', 'Temporary Dotum Commit'
+      run 'git', 'pull', '--rebase'
+      run 'git', 'reset', 'HEAD^'
     end
   end
 
   def default_destination
-    basename = [@repo_uri, @branch].compact.join("-").gsub(/[\/:]+/, "-")
+    basename = [@repo_uri, @branch].compact.join('-').gsub(/[\/:]+/, '-')
 
-    context.state_dir.join("repo", basename)
+    context.state_dir.join('repo', basename)
   end
 
   def is_local?
-    @repo_uri.start_with? "file://"
+    @repo_uri.start_with? 'file://'
   end
 
 end

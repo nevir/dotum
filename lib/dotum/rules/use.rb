@@ -20,8 +20,8 @@ private
   def execute
     failure! "Expected #{@path} to be a directory!" unless @path.directory?
 
-    rule_file = @path.join("rules.dotum")
-    rule_file = Dotum::DATA_PATH.join("default_rules.dotum") unless rule_file.file?
+    rule_file = @path.join('rules.dotum')
+    rule_file = Dotum::DATA_PATH.join('default_rules.dotum') unless rule_file.file?
 
     new_context = context.fork(:package_dir => @path)
 

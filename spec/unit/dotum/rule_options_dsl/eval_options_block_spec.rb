@@ -1,5 +1,5 @@
-describe Dotum::RuleOptionsDSL, "#eval_options_block" do
-  include_context "options DSL"
+describe Dotum::RuleOptionsDSL, '#eval_options_block' do
+  include_context 'options DSL'
 
   before(:each) do
     base_class.class_eval do
@@ -8,16 +8,16 @@ describe Dotum::RuleOptionsDSL, "#eval_options_block" do
     end
   end
 
-  it "should return the evaluated options" do
+  it 'should return the evaluated options' do
     options = base_class.eval_options_block do
-      foo "foo!"
-      bar "bar!"
+      foo 'foo!'
+      bar 'bar!'
     end
 
-    expect(options).to eq({:foo => "foo!", :bar => "bar!"})
+    expect(options).to eq({:foo => 'foo!', :bar => 'bar!'})
   end
 
-  it "should only accept defined options" do
+  it 'should only accept defined options' do
     expect {
       base_class.eval_options_block do
         not_an_option :hi

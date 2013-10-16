@@ -9,7 +9,7 @@ AllCops:
     - 'Guardfile'
     - 'Rakefile'
   Excludes:
-    - 'lib/dotum/externs/**'
+    - 'extern/**'
 
 HashSyntax:
   EnforcedStyle: hash_rockets

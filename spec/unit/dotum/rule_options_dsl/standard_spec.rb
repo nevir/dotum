@@ -1,7 +1,7 @@
-describe Dotum::RuleOptionsDSL, "#standard" do
-  include_context "options DSL"
+describe Dotum::RuleOptionsDSL, '#standard' do
+  include_context 'options DSL'
 
-  describe "properly defined" do
+  describe 'properly defined' do
 
     before(:each) do
       module Dotum::StandardOptions::FooForTest
@@ -19,7 +19,7 @@ describe Dotum::RuleOptionsDSL, "#standard" do
       Dotum::StandardOptions.send(:remove_const, :FooForTest)
     end
 
-    it "should properly reference a standard option" do
+    it 'should properly reference a standard option' do
       expect(base_class.option_configs).to have_key(:foo_for_test)
     end
 
@@ -30,7 +30,7 @@ describe Dotum::RuleOptionsDSL, "#standard" do
 
   end
 
-  it "should raise a LoadError for undefined standard options" do
+  it 'should raise a LoadError for undefined standard options' do
     expect {
       base_class.class_eval do
         standard :missing_option
@@ -38,7 +38,7 @@ describe Dotum::RuleOptionsDSL, "#standard" do
     }.to raise_error(ArgumentError, /Dotum::StandardOptions::MissingOption/)
   end
 
-  it "should raise a LoadError for modules that define the wrong option" do
+  it 'should raise a LoadError for modules that define the wrong option' do
     begin
       module Dotum::StandardOptions::SomeOption
         extend Dotum::RuleOptionsDSL

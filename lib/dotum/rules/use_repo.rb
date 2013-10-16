@@ -1,4 +1,4 @@
-require "uri"
+require 'uri'
 
 class Dotum::Rules::UseRepo < Dotum::AbstractRules::OptionsBase
 
@@ -38,11 +38,11 @@ private
   def execute_dotum
     # Straight up `use` the repo if it is rooted with a `rules.dotum`.
     if @destination.join('rules.dotum').file?
-      use "."
+      use '.'
 
     # Otherwise, this is a 'meta-package' that contains child packages.
     else
-      @destination.relative_glob("*", &:directory?).each do |package_path|
+      @destination.relative_glob('*', &:directory?).each do |package_path|
         use package_path
       end
     end
@@ -50,7 +50,7 @@ private
 
   def execute_legacy
     # In legacy mode, we just symlink everything
-    link "**/*"
+    link '**/*'
   end
 
 end

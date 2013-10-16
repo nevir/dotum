@@ -13,7 +13,7 @@ module Dotum::StandardOptions::Destination
       failure! "Parent path #{parent_dir} is not a directory; cannot write into it!"
     end
 
-    run "mkdir", "-p", parent_dir unless parent_dir.directory?
+    run 'mkdir', '-p', parent_dir unless parent_dir.directory?
   end
   register_preprocessor :preprocess_for_destination
 

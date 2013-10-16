@@ -1,4 +1,4 @@
-shared_context "options DSL" do
+shared_context 'options DSL' do
 
   let(:base_class) {
     Class.new.tap do |klass|

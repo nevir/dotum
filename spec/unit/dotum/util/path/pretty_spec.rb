@@ -1,33 +1,33 @@
-describe Dotum::Util::Path, "#pretty" do
+describe Dotum::Util::Path, '#pretty' do
 
-  it "should collapse paths referencing the home dir" do
-    expect(described_class.new(ENV["HOME"]).join("one").pretty).to eq("~/one")
+  it 'should collapse paths referencing the home dir' do
+    expect(described_class.new(ENV['HOME']).join('one').pretty).to eq('~/one')
   end
 
-  it "should return full paths as fallback" do
-    expect(described_class.new("/foo/bar").pretty).to eq("/foo/bar")
+  it 'should return full paths as fallback' do
+    expect(described_class.new('/foo/bar').pretty).to eq('/foo/bar')
   end
 
-  it "should return a string" do
-    expect(described_class.new("thing").pretty).to be_a(String)
+  it 'should return a string' do
+    expect(described_class.new('thing').pretty).to be_a(String)
   end
 
 
   # Unix
   # ----
-  if File::Separator == "/"
+  if File::Separator == '/'
 
-    it "should return full paths as fallback" do
-      expect(described_class.new("/foo/bar").pretty).to eq("/foo/bar")
+    it 'should return full paths as fallback' do
+      expect(described_class.new('/foo/bar').pretty).to eq('/foo/bar')
     end
 
 
   # Windows
   # -------
-  elsif File::Separator == "\\"
+  elsif File::Separator == '\\'
 
-    it "should return full paths as fallback" do
-      expect(described_class.new("C:\\foo\\bar").pretty).to eq("C:\\foo\\bar")
+    it 'should return full paths as fallback' do
+      expect(described_class.new('C:\\foo\\bar').pretty).to eq('C:\\foo\\bar')
     end
 
 

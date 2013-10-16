@@ -1,4 +1,4 @@
-require "uri"
+require 'uri'
 
 class Dotum::Rules::RequireExtension < Dotum::AbstractRules::OptionsBase
 
@@ -32,7 +32,7 @@ private
     # gems. Explicit is good here!
 
     # So, just load all files in the extension and be done with it.
-    @destination.glob("lib/**/*.rb").each do |path|
+    @destination.glob('lib/**/*.rb').each do |path|
       Kernel.load(path)
     end
   end

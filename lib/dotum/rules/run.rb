@@ -7,7 +7,7 @@ class Dotum::Rules::Run < Dotum::AbstractRules::Base
   end
 
   def pretty_subject
-    @command.join(" ")
+    @command.join(' ')
   end
 
 private

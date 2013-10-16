@@ -17,12 +17,12 @@ class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
     source_is_glob = GLOB_MATCHER === source
     target_is_dir  = DIR_MATCHER  === destination if destination
     if source_is_glob && destination && !target_is_dir
-      raise "target path must be a directory when linking a glob expression."
+      raise 'target path must be a directory when linking a glob expression.'
     end
 
     sources = context.package_dir.relative_glob(source, &:file?)
     if sources.size > 1 && destination && !target_is_dir
-      raise "Bug!  target path is a file, but we globbed multiple sources!"
+      raise 'Bug!  target path is a file, but we globbed multiple sources!'
     end
 
     sources.reject! { |p| options[:ignore_pattern] =~ p }

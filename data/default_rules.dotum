@@ -5,7 +5,7 @@
 # Package Loading
 # --------------
 # Any directories that contain a `rules.dotum` are `use`d.
-package_paths = package_dir.relative_glob("**/rules.dotum")
+package_paths = package_dir.relative_glob('**/rules.dotum')
 package_paths.map! { |p| File.dirname(p) }
 
 if package_paths.size > 1
@@ -34,7 +34,7 @@ end
 # Linking
 # -------
 # We link everything that doesn't fall under a package path.
-file_paths = package_dir.relative_glob("**/*", &:file?)
+file_paths = package_dir.relative_glob('**/*', &:file?)
 file_paths.reject! { |file_path|
   package_paths.any? { |package_path| file_path.start_with? package_path }
 }
