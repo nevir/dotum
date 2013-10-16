@@ -1,4 +1,4 @@
-namespace :spec do
+namespace :test do
 
   desc "Run tests with code coverage"
   task :coverage do
@@ -8,7 +8,7 @@ namespace :spec do
     ENV["FULL_COVERAGE_RUN"] = "yes"
 
     begin
-      Rake::Task["spec"].execute
+      Rake::Task["test:unit"].execute
 
       if RUBY_PLATFORM.include? "darwin"
         `open #{File.join(PROJECT_ROOT, "coverage", "index.html")}`

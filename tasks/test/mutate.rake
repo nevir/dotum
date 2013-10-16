@@ -1,8 +1,8 @@
-namespace :spec do
+namespace :test do
 
   SPEC_TARGET_MATCHER = /^describe\s+(Dotum::[:\w]+)(?:,\s*"([^"]+)")?/
 
-  desc "Runs tests with code mutation"
+  desc "Runs unit tests with code mutation"
   task :mutate, [:focus_on] do |t, args|
     require "dotum"
 
