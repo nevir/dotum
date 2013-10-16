@@ -1,4 +1,4 @@
-guard 'spork', :rspec_port => 2772 do
+guard :spork, :rspec_port => 2772 do
   watch('Gemfile')
   watch('Gemfile.lock')
 
@@ -21,7 +21,7 @@ def specs_for_path(path)
   ].flatten
 end
 
-guard 'rspec', :cmd => 'rspec --drb --drb-port 2772' do
+guard :rspec, :cmd => 'rspec --drb --drb-port 2772' do
   watch('lib/dotum.rb') { 'spec' }
   watch('lib/dotum/autoload_convention.rb') { 'spec' }
   watch(%r{^spec/fixtures/.*\.rb$}) { 'spec' }
@@ -29,4 +29,15 @@ guard 'rspec', :cmd => 'rspec --drb --drb-port 2772' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/dotum/(.+)\.rb$}) { |m| specs_for_path(m[1]) }
   watch(%r{^spec/fixtures/(.+?)/.*}) { |m| specs_for_path(m[1]) }
+end
+
+guard :rubocop, :all_on_start => false do
+  watch('.rubocop.yml') { '.' }
+
+  watch(/.+\.(rb|dotum|rake|gemspec)$/)
+  watch('.guardrc')
+  watch('.Rakefile')
+  watch('.simplecov')
+  watch('Gemfile')
+  watch('Guardfile')
 end
