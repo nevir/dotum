@@ -1,0 +1,25 @@
+AllCops:
+  Includes:
+    - '**/*.gemspec'
+    - '**/*.rake'
+    - '**/*.dotum'
+    - '.guardrc'
+    - '.simplecov'
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'Rakefile'
+  Excludes:
+    - 'lib/dotum/externs/**'
+
+HashSyntax:
+  Enabled: false
+
+LineLength:
+  Max: 80
+
+MethodLength:
+  Max: 20
+
+TrivialAccessors:
+  AllowPredicates: true
+

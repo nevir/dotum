@@ -20,6 +20,9 @@ group :test do
 
   # Code coverage in badge form - https://coveralls.io/
   gem "coveralls", "~> 0.7"
+
+  # Style enforcement & linting
+  gem "rubocop", "~> 0.14.1"
 end
 
 group :debugging do
