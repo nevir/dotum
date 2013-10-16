@@ -31,11 +31,11 @@ describe Dotum::RuleOptionsDSL, '#standard' do
   end
 
   it 'should raise a LoadError for undefined standard options' do
-    expect {
+    expect do
       base_class.class_eval do
         standard :missing_option
       end
-    }.to raise_error(ArgumentError, /Dotum::StandardOptions::MissingOption/)
+    end.to raise_error(ArgumentError, /Dotum::StandardOptions::MissingOption/)
   end
 
   it 'should raise a LoadError for modules that define the wrong option' do
@@ -45,11 +45,11 @@ describe Dotum::RuleOptionsDSL, '#standard' do
         optional :wrong_name
       end
 
-      expect {
+      expect do
         base_class.class_eval do
           standard :some_option
         end
-      }.to raise_error(/Dotum::StandardOptions::SomeOption/)
+      end.to raise_error(/Dotum::StandardOptions::SomeOption/)
     ensure
       Dotum::StandardOptions.send(:remove_const, :SomeOption)
     end
@@ -61,11 +61,11 @@ describe Dotum::RuleOptionsDSL, '#standard' do
         extend Dotum::RuleOptionsDSL
       end
 
-      expect {
+      expect do
         base_class.class_eval do
           standard :some_option
         end
-      }.to raise_error(/Dotum::StandardOptions::SomeOption/)
+      end.to raise_error(/Dotum::StandardOptions::SomeOption/)
     ensure
       Dotum::StandardOptions.send(:remove_const, :SomeOption)
     end

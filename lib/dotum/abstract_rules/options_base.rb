@@ -5,13 +5,13 @@ class Dotum::AbstractRules::OptionsBase < Dotum::AbstractRules::Base
     options.merge! eval_options_block(&block) if block
 
     if errors = validate_options(options)
-      raise "Validation errors: #{errors.inspect}"
+      fail "Validation errors: #{errors.inspect}"
     end
 
     if respond_to? :expand_options
-      expand_options(context, options).map { |rule_options|
+      expand_options(context, options).map do |rule_options|
         new(context, rule_options).exec
-      }
+      end
     else
       new(context, options).exec
     end

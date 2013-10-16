@@ -27,7 +27,7 @@ class Dotum::AbstractRules::Base
     context.logger.finish_rule(self, status, reason)
 
     if status == :failure
-      raise "Rule failed: #{reason}"
+      fail "Rule failed: #{reason}"
     end
 
     self
@@ -36,7 +36,7 @@ class Dotum::AbstractRules::Base
   attr_reader :context
 
   def pretty_subject
-    raise NotImplementedError, "#{self.class}#pretty_subject"
+    fail NotImplementedError, "#{self.class}#pretty_subject"
   end
 
 protected
@@ -48,7 +48,7 @@ protected
   end
 
   def execute
-    raise NotImplementedError, "#{self.class}#execute"
+    fail NotImplementedError, "#{self.class}#execute"
   end
 
 end

@@ -5,9 +5,9 @@ describe Dotum::Util::Path, '#write' do
 
   let(:tempfile) { Tempfile.new('writer') }
 
-  subject {
+  subject do
     described_class.new(tempfile.path)
-  }
+  end
 
   it 'should write to a file' do
     subject.write('ohai')

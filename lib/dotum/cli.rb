@@ -33,7 +33,7 @@ class Dotum::CLI
   def ensure_package_dir!
     unless @package_dir.directory?
       puts
-      puts "#{@package_dir.pretty} doesn't exist!  Creating for now..."
+      puts "#{@package_dir.pretty} doesn't exist! Creating for now..."
       FileUtils.mkpath(@package_dir)
     end
   end

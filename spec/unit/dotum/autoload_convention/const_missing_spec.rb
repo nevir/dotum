@@ -1,11 +1,11 @@
 describe Dotum::AutoloadConvention, '#const_missing' do
 
-  let(:namespace) {
+  let(:namespace) do
     module Fixtures::AutoloadConvention; end
     Fixtures::AutoloadConvention.extend(subject)
 
     Fixtures::AutoloadConvention
-  }
+  end
 
   after(:each) do
     if defined? Fixtures::AutoloadConvention

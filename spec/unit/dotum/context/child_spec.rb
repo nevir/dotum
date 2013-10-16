@@ -1,8 +1,8 @@
 describe Dotum::Context, '#child' do
 
-  subject {
+  subject do
     described_class.new(:target_dir => 'code/goes/heer')
-  }
+  end
 
   it 'should not require any new attributes' do
     child = subject.child

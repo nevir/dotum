@@ -17,17 +17,17 @@ class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
     source_is_glob = GLOB_MATCHER === source
     target_is_dir  = DIR_MATCHER  === destination if destination
     if source_is_glob && destination && !target_is_dir
-      raise 'target path must be a directory when linking a glob expression.'
+      fail 'Target path must be a directory when linking a glob expression.'
     end
 
     sources = context.package_dir.relative_glob(source, &:file?)
     if sources.size > 1 && destination && !target_is_dir
-      raise 'Bug!  target path is a file, but we globbed multiple sources!'
+      fail 'Bug! Target path is a file, but we globbed multiple sources!'
     end
 
     sources.reject! { |p| options[:ignore_pattern] =~ p }
 
-    sources.map { |source_path|
+    sources.map do |source_path|
       # Behave like `ln` if the target is a directory; the file is made a direct
       # descendent of that directory.
       if target_is_dir
@@ -39,7 +39,7 @@ class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
       end
 
       options.merge(:source => source_path, :destination => destination_path)
-    }
+    end
   end
 
   def pretty_subject

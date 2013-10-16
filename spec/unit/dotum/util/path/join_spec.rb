@@ -1,8 +1,8 @@
 describe Dotum::Util::Path, '#join' do
 
-  subject {
+  subject do
     described_class.new('base')
-  }
+  end
 
   it 'should append components' do
     expect(subject.join('one')).to eq(File.join(Dir.pwd, 'base', 'one'))
@@ -23,7 +23,6 @@ describe Dotum::Util::Path, '#join' do
     expect(subject.join(described_class.new('~/thing'))).to eq(File.join(ENV['HOME'], 'thing'))
   end
 
-
   # Unix
   # ----
   if File::Separator == '/'
@@ -36,7 +35,6 @@ describe Dotum::Util::Path, '#join' do
       expect(subject.join('a', '/b', 'c', '/d', 'e')).to eq('/d/e')
     end
 
-
   # Windows
   # -------
   elsif File::Separator == '\\'
@@ -45,16 +43,14 @@ describe Dotum::Util::Path, '#join' do
       expect(subject.join('C:\\foo')).to eq('C:\\hi')
     end
 
-
     it 'should expand from the last absolute path given' do
       expect(subject.join('a', 'B:\\c', 'd', 'E:\\f', 'g')).to eq('E:\\f\\g')
     end
 
-
   # Unknown!
   # --------
   else
-   raise "Unknown file separator #{File::Separator}!"
+    fail "Unknown file separator #{File::Separator}!"
   end
 
 end

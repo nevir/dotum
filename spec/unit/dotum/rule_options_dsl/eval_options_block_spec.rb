@@ -18,11 +18,11 @@ describe Dotum::RuleOptionsDSL, '#eval_options_block' do
   end
 
   it 'should only accept defined options' do
-    expect {
+    expect do
       base_class.eval_options_block do
         not_an_option :hi
       end
-    }.to raise_error
+    end.to raise_error
   end
 
 end

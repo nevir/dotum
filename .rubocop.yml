@@ -23,5 +23,8 @@ MethodLength:
 RegexpLiteral:
   MaxSlashes: 0
 
+SpaceInsideHashLiteralBraces:
+  EnforcedStyleIsWithSpaces: false
+
 TrivialAccessors:
   AllowPredicates: true

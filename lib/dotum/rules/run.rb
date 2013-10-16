@@ -15,7 +15,7 @@ private
   def execute
     Kernel.system(*@command)
 
-    failure! unless $?.success?
+    failure! unless $CHILD_STATUS.success?
   end
 
 end

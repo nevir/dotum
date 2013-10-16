@@ -1,11 +1,11 @@
 describe Dotum::OptionsContext, '#method_missing' do
 
-  subject {
-    described_class.new({
+  subject do
+    described_class.new(
       :one => Dotum::RuleOptionsDSL::OptionConfig.new,
       :two => Dotum::RuleOptionsDSL::OptionConfig.new,
-    });
-  }
+    )
+  end
 
   it 'should expose a setter when called w/ one argument' do
     subject.one(:hi)

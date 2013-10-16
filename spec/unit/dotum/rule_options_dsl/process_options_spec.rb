@@ -1,13 +1,13 @@
 describe Dotum::RuleOptionsDSL, '#process_options' do
   include_context 'options DSL'
 
-  let(:context) {
+  let(:context) do
     Object.new.tap do |context|
       def context.thing
         123
       end
     end
-  }
+  end
 
   context 'with filters' do
 

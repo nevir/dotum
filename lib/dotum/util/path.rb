@@ -10,7 +10,6 @@ class Dotum::Util::Path
     @path = File.expand_path(path, relative)
   end
 
-
   # Predicates
   # ----------
 
@@ -34,14 +33,12 @@ class Dotum::Util::Path
     File.split(@path).any? { |p| p.start_with? '.' }
   end
 
-
   # Metadata
   # --------
 
   def link_path
     self.class.new(File.readlink(@path), File.dirname(@path))
   end
-
 
   # Composition
   # -----------
@@ -69,11 +66,11 @@ class Dotum::Util::Path
     matches = Dir.glob(join(expression), File::FNM_DOTMATCH)
 
     matches.reject! { |p| !filter.call(self.class.new(p)) } if filter
-    matches.reject! { |path|
+    matches.reject! do |path|
       basename = File.basename(path)
 
       basename == '.' || basename == '..'
-    }
+    end
 
     matches.map { |p| self.class.new(p) }
   end
@@ -101,7 +98,6 @@ class Dotum::Util::Path
     File.join(new_parts)
   end
 
-
   # Input/Output
   # ------------
 
@@ -114,7 +110,6 @@ class Dotum::Util::Path
       file.write(content)
     end
   end
-
 
   # Inspection
   # ----------
@@ -135,7 +130,6 @@ class Dotum::Util::Path
 
     @path
   end
-
 
   # Comparison
   # ----------

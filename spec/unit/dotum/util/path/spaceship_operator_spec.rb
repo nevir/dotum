@@ -6,8 +6,10 @@ describe Dotum::Util::Path, '#<=>' do
     expect(described_class.included_modules).to include(Comparable)
   end
 
-  it 'should support equality' do
+  it 'should support identity' do
+    # rubocop:disable UselessComparison
     expect(described_class.new('asdf') <=> described_class.new('asdf')).to eq(0)
+    # rubocop:enable UselessComparison
   end
 
   it 'should support sorted comparisons' do

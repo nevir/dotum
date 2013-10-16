@@ -1,10 +1,10 @@
 describe Dotum::Util::ANSIControl, '#ansi_color' do
 
-  subject {
+  subject do
     Object.new.tap do |object|
       (class << object; self; end).send(:include, described_class)
     end
-  }
+  end
 
   it 'should return an escaped color' do
     expect(subject.ansi_color('heyo', '30')).to eq("\e[30mheyo\e[0m")

@@ -1,9 +1,8 @@
 # Default `use` Behavior
 # ======================
 
-
 # Package Loading
-# --------------
+# ---------------
 # Any directories that contain a `rules.dotum` are `use`d.
 package_paths = package_dir.relative_glob('**/rules.dotum')
 package_paths.map! { |p| File.dirname(p) }
@@ -30,14 +29,13 @@ package_paths.each do |package_path|
   use package_path
 end
 
-
 # Linking
 # -------
 # We link everything that doesn't fall under a package path.
 file_paths = package_dir.relative_glob('**/*', &:file?)
-file_paths.reject! { |file_path|
+file_paths.reject! do |file_path|
   package_paths.any? { |package_path| file_path.start_with? package_path }
-}
+end
 
 file_paths.each do |file_path|
   link file_path
