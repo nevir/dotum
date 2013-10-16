@@ -15,7 +15,10 @@ guard 'spork', :rspec_port => 2772 do
 end
 
 def specs_for_path(path)
-  ["spec/unit/#{path}_spec.rb", Dir["spec/unit/#{path}/**/*_spec.rb"]].flatten
+  [
+    "spec/unit/dotum/#{path}_spec.rb",
+    Dir["spec/unit/dotum/#{path}/**/*_spec.rb"]
+  ].flatten
 end
 
 guard 'rspec', :cmd => 'rspec --drb --drb-port 2772' do
@@ -24,5 +27,6 @@ guard 'rspec', :cmd => 'rspec --drb --drb-port 2772' do
   watch(%r{^spec/fixtures/.*\.rb$}) { 'spec' }
 
   watch(%r{^spec/.+_spec\.rb$})
-  watch(%r{^lib/(.+)\.rb$}) { |m| specs_for_path(m[1]) }
+  watch(%r{^lib/dotum/(.+)\.rb$}) { |m| specs_for_path(m[1]) }
+  watch(%r{^spec/fixtures/(.+?)/.*}) { |m| specs_for_path(m[1]) }
 end
