@@ -4,7 +4,7 @@ namespace :test do
   begin
     require 'rubocop/rake_task'
     Rubocop::RakeTask.new(:style)
-  rescue
+  rescue LoadError
     task :style do
       puts 'Rubocop is not supported for this platform.'
     end

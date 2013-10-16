@@ -45,7 +45,7 @@ group :guard do
   gem 'guard-rspec', '~> 4.0'
 
   # Guard configuration for rubocop style & lint checks.
-  gem 'guard-rubocop', '~> 1.0'
+  gem 'guard-rubocop', '~> 1.0', :platforms => [:ruby_19, :ruby_20]
 
   # File system event hooks for OS X.
   gem 'rb-fsevent', '~> 0.9'
