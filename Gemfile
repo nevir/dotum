@@ -22,8 +22,8 @@ group :test do
   gem 'coveralls', '~> 0.7'
 
   # Style enforcement & linting.
-  # gem 'rubocop', '~> 0.14.2'
-  gem 'rubocop', :git => 'https://github.com/bbatsov/rubocop'
+  # gem 'rubocop', '~> 0.14.2', :platforms => [:ruby_19, :ruby_20]
+  gem 'rubocop', :git => 'https://github.com/bbatsov/rubocop', :platforms => [:ruby_19, :ruby_20]
 end
 
 group :debugging do
