@@ -1,3 +1,9 @@
+# `Logger`
+# ========
+
+# A `Logger` manages all output for a Dotum run.
+#
+# This logger spits out pretty information to the console.
 class Dotum::Logger
   include Dotum::Util::ANSIControl
 

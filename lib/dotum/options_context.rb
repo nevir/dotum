@@ -1,3 +1,14 @@
+# `OptionsContext`
+
+# An `OptionsContext` is a Hash-like object that also provides DSL-like behavior
+# where you can set values by calling them:
+#
+#     Dotum::OptionsContext.new(configs).instance_eval do
+#       some_field 'some value'
+#     end
+#
+# If configured with `some_field`, the above would result in an `OptionsContext`
+# that contains `{:some_field => 'some value'}`
 class Dotum::OptionsContext < Hash
 
   def initialize(option_configs)

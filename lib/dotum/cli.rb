@@ -1,5 +1,8 @@
+# `CLI`
+# =====
 require 'fileutils'
 
+# Entry point and manager for the `dotum` CLI binary.
 class Dotum::CLI
 
   def self.exec(args)
@@ -21,15 +24,18 @@ class Dotum::CLI
       :target_dir => @target_dir,
       :logger     => Dotum::Logger.new
     )
+    ensure_package_dir!
 
+    Dotum::Rules::UseRepo.exec(context, @package_dir)
+    print "\n\n"
+  end
+
+  def ensure_package_dir!
     unless @package_dir.directory?
       puts
       puts "#{@package_dir.pretty} doesn't exist!  Creating for now..."
       FileUtils.mkpath(@package_dir)
     end
-
-    Dotum::Rules::UseRepo.exec(context, @package_dir)
-    print "\n\n"
   end
 
 end

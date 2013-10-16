@@ -1,3 +1,12 @@
+# `Context`
+# =========
+
+# A `Context` represents the state in which a rule should execute under.
+#
+# It tracks where various directories are located, the rule depth, logging, etc.
+#
+# Every rule is invoked with a context, and may [`fork`](#fork) the context as
+# necessary to modify it (Contexts are immutable).
 class Dotum::Context
 
   def initialize(attributes = nil)
