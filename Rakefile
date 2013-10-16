@@ -9,4 +9,4 @@ end
 $LOAD_PATH.unshift File.join(PROJECT_ROOT, 'lib')
 
 desc 'Run the full test suite'
-task :default => :"test:unit"
+task :default => 'test:unit'

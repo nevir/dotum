@@ -12,7 +12,7 @@ AllCops:
     - 'lib/dotum/externs/**'
 
 HashSyntax:
-  Enabled: false
+  EnforcedStyle: hash_rockets
 
 LineLength:
   Max: 80
@@ -20,6 +20,8 @@ LineLength:
 MethodLength:
   Max: 20
 
+RegexpLiteral:
+  MaxSlashes: 0
+
 TrivialAccessors:
   AllowPredicates: true
-
