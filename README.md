@@ -14,11 +14,11 @@ TODO.
 License
 -------
 
-Dotum is MIT licensed.  [See the accompanying file](MIT-LICENSE.md) for the
-full text.
+Dotum is MIT licensed. [See the accompanying file](MIT-LICENSE.md) for the full
+text.
 
 Dotum [also includes](extern/json/CHANGES.md) the pure-Ruby portions of
 [flori's JSON implementation](https://github.com/flori/json), which is
-[Ruby licensed](extern/json/COPYING).  This is used for Ruby implementations
-that do not already bundle it (i.e. 1.8), so that Dotum doesn't have to depend
-on other gems.
+[Ruby licensed](extern/json/COPYING). This is used for Ruby implementations that
+do not already bundle it (i.e. 1.8), so that Dotum doesn't have to depend on
+other gems.

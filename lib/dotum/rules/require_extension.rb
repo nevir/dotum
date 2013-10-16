@@ -27,9 +27,9 @@ private
     failure! "Failed to clone repo to #{@destination}" unless @destination.directory?
 
     # Dotum extensions are practically gems, but we don't want the overhead of
-    # building a gemspec.  Also, `require_extension` is the only supported
-    # means of loading them.  We don't want magic extensions to be already
-    # loaded via gems.  Explicit is good here!
+    # building a gemspec. Also, `require_extension` is the only supported means
+    # of loading them. We don't want magic extensions to be already loaded via
+    # gems. Explicit is good here!
 
     # So, just load all files in the extension and be done with it.
     @destination.glob("lib/**/*.rb").each do |path|

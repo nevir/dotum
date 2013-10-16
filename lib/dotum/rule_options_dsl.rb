@@ -26,7 +26,7 @@ module Dotum::RuleOptionsDSL
     begin
       option_module = Dotum::StandardOptions.const_get(option_module_name)
     rescue LoadError
-      raise ArgumentError, "Unknown standard option '#{option}'.  Tried to load Dotum::StandardOptions::#{option_module_name}: #{$ERROR_INFO}"
+      raise ArgumentError, "Unknown standard option '#{option}'. Tried to load Dotum::StandardOptions::#{option_module_name}: #{$ERROR_INFO}"
     end
 
     module_configs = option_module.instance_variable_get(:@option_configs)
