@@ -12,7 +12,7 @@ class Dotum::Rules::UseRepo < Dotum::AbstractRules::OptionsBase
     @repo_uri
   end
 
-private
+  private
 
   def execute
     # Does it look like a URI?

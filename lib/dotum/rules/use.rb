@@ -15,7 +15,7 @@ class Dotum::Rules::Use < Dotum::AbstractRules::OptionsBase
     @path.pretty
   end
 
-private
+  private
 
   def execute
     failure! "Expected #{@path} to be a directory!" unless @path.directory?

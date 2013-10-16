@@ -12,7 +12,7 @@ class Dotum::Rules::RequireExtension < Dotum::AbstractRules::OptionsBase
     @extension_uri
   end
 
-private
+  private
 
   def execute
     # Does it look like a URI?

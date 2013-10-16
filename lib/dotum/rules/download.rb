@@ -12,7 +12,7 @@ class Dotum::Rules::Download < Dotum::AbstractRules::OptionsBase
     "#{@destination.pretty} (#{@uri})"
   end
 
-private
+  private
 
   def execute
     if @destination.exists? && !@destination.file?

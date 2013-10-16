@@ -2,10 +2,10 @@
 class Dotum::Util::Path
   include Comparable
 
-  ABSOLUTE_PATH_MATCHER = /^(~?\/|\w+\:\\)/
+  ABSOLUTE_PATH_MATCHER = %r{^(~?/|\w+:\\)}
 
-  def initialize(path, relative=nil)
-    path = path.to_str.gsub(/[\/\\]/, File::Separator)
+  def initialize(path, relative = nil)
+    path = path.to_str.gsub(%r{[/\\]}, File::Separator)
 
     @path = File.expand_path(path, relative)
   end
@@ -123,12 +123,14 @@ class Dotum::Util::Path
   end
 
   def pretty
-    @@home_dir ||= File.expand_path('~')
-    if @path.start_with? @@home_dir
-      return '~' + @path[@@home_dir.size..-1]
-    end
+    home_dir = self.class.home_dir
+    return '~' + @path[home_dir.size..-1] if @path.start_with? home_dir
 
     @path
+  end
+
+  def self.home_dir
+    @home_dir ||= File.expand_path('~')
   end
 
   # Comparison

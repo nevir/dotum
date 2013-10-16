@@ -12,7 +12,7 @@ class Dotum::Rules::Cd < Dotum::AbstractRules::Base
     @destination.pretty
   end
 
-private
+  private
 
   def execute
     Dir.chdir(@destination, &@block)

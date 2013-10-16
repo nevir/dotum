@@ -12,7 +12,7 @@ class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
     @repo_uri
   end
 
-private
+  private
 
   def execute
     @destination ||= default_destination

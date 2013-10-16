@@ -1,6 +1,6 @@
 class Dotum::Rules::Link < Dotum::AbstractRules::GlobbableFiles
 
-private
+  private
 
   def execute
     link_path = @destination.symlink? ? @destination.link_path : nil

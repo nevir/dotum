@@ -10,7 +10,7 @@ class Dotum::Rules::Run < Dotum::AbstractRules::Base
     @command.join(' ')
   end
 
-private
+  private
 
   def execute
     Kernel.system(*@command)

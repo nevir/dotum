@@ -25,10 +25,7 @@ class Dotum::AbstractRules::Base
     end
 
     context.logger.finish_rule(self, status, reason)
-
-    if status == :failure
-      fail "Rule failed: #{reason}"
-    end
+    fail "Rule failed: #{reason}" if status == :failure
 
     self
   end
@@ -39,7 +36,7 @@ class Dotum::AbstractRules::Base
     fail NotImplementedError, "#{self.class}#pretty_subject"
   end
 
-protected
+  protected
 
   def preprocess
     self.class.preprocessor_methods.each do |sym|
