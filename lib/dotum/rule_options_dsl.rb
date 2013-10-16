@@ -1,3 +1,7 @@
+# `RuleOptionsDSL`
+# ================
+
+# The set of DSL methods available to rule definitions.
 module Dotum::RuleOptionsDSL
 
   OptionConfig = Struct.new(:filter, :validator, :default)
@@ -16,7 +20,7 @@ module Dotum::RuleOptionsDSL
     )
   end
 
-  def optional(option, default=nil, &block)
+  def optional(option, default = nil, &block)
     (@option_configs ||= {})[option] = OptionConfig.new(block, nil, default)
   end
 
@@ -26,12 +30,19 @@ module Dotum::RuleOptionsDSL
     begin
       option_module = Dotum::StandardOptions.const_get(option_module_name)
     rescue LoadError
-      raise ArgumentError, "Unknown standard option '#{option}'. Tried to load Dotum::StandardOptions::#{option_module_name}: #{$ERROR_INFO}"
+      raise(
+        ArgumentError,
+        "Unknown standard option '#{option}'. Unable to load " +
+        "Dotum::StandardOptions::#{option_module_name}: #{$ERROR_INFO}"
+      )
     end
 
     module_configs = option_module.instance_variable_get(:@option_configs)
     unless module_configs && module_configs[option]
-      fail "Dotum::StandardOptions::#{option_module_name} is misconfigured; expected it to define the option '#{option}'"
+      fail(
+        "Dotum::StandardOptions::#{option_module_name} is misconfigured; " +
+        "expected it to define the option '#{option}'"
+      )
     end
 
     include option_module
@@ -41,7 +52,6 @@ module Dotum::RuleOptionsDSL
     @preprocessors ||= []
     @preprocessors.push(sym)
   end
-
 
   # Configuration Management
   # ------------------------
@@ -75,7 +85,7 @@ module Dotum::RuleOptionsDSL
       end
     end
 
-    result.reject! { |_,v| v.nil? }
+    result.reject! { |_, v| v.nil? }
     result
   end
 
@@ -86,11 +96,12 @@ module Dotum::RuleOptionsDSL
     options
   end
 
-  def process_options(options, context=nil)
+  def process_options(options, context = nil)
     result = options.dup
     options.each do |option, value|
       next if value.nil?
-      next unless filter = option_configs.fetch(option, {})[:filter]
+      filter = option_configs.fetch(option, {})[:filter]
+      next unless filter
 
       result[option] = context.instance_exec(value, &filter)
     end
@@ -101,15 +112,16 @@ module Dotum::RuleOptionsDSL
   def validate_options(options)
     errors = []
     option_configs.each do |option, config|
-      next unless validator = config[:validator]
-      next unless error = validator.call(options[option])
+      validator = config[:validator]
+      next unless validator
+      error = validator.call(options[option])
+      next unless error
 
       errors.push(error)
     end
 
     errors if errors.size > 0
   end
-
 
   # Implementation Details
   # ----------------------
@@ -126,7 +138,9 @@ module Dotum::RuleOptionsDSL
 
   def shorthand_config
     return @shorthand_config if defined? @shorthand_config
-    return superclass.shorthand_config if superclass.respond_to? :shorthand_config
+    if superclass.respond_to? :shorthand_config
+      return superclass.shorthand_config
+    end
 
     []
   end

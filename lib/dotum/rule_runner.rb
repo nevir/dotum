@@ -1,3 +1,7 @@
+# `RuleRunner`
+# ============
+
+# An evaluation context for rule files to run within.
 class Dotum::RuleRunner
   include Dotum::RuleDSL
 
