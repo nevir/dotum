@@ -28,3 +28,8 @@ SpaceInsideHashLiteralBraces:
 
 TrivialAccessors:
   AllowPredicates: true
+  ExactNameMatch: true
+
+WordArray:
+  Enabled: false
+

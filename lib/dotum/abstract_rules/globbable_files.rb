@@ -14,8 +14,8 @@ class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
     source      = options[:source]
     destination = options[:destination]
 
-    source_is_glob = GLOB_MATCHER === source
-    target_is_dir  = DIR_MATCHER  === destination if destination
+    source_is_glob = GLOB_MATCHER =~ source
+    target_is_dir  = DIR_MATCHER  =~ destination if destination
     if source_is_glob && destination && !target_is_dir
       fail 'Target path must be a directory when linking a glob expression.'
     end

@@ -51,7 +51,7 @@ class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
   end
 
   def default_destination
-    basename = [@repo_uri, @branch].compact.join('-').gsub(/[\/:]+/, '-')
+    basename = [@repo_uri, @branch].compact.join('-').gsub(%r{[/:]+}, '-')
 
     context.state_dir.join('repo', basename)
   end
