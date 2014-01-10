@@ -10,11 +10,15 @@ describe Dotum::Util::Path, '#read' do
   end
 
   it 'should raise EISDIR when reading a directory' do
-    expect { described_class.new(directory_fixture).read }.to raise_error(Errno::EISDIR)
+    expect { described_class.new(directory_fixture).read }.to raise_error(
+      Errno::EISDIR
+    )
   end
 
   it 'should raise ENOENT when reading a non-entity' do
-    expect { described_class.new(non_fixture).read }.to raise_error(Errno::ENOENT)
+    expect { described_class.new(non_fixture).read }.to raise_error(
+      Errno::ENOENT
+    )
   end
 
 end

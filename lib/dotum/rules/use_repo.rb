@@ -24,7 +24,9 @@ class Dotum::Rules::UseRepo < Dotum::AbstractRules::OptionsBase
       @destination = Dotum::Util::Path.new(@repo_uri)
     end
 
-    failure! "Failed to clone repo to #{@destination}" unless @destination.directory?
+    unless @destination.directory?
+      failure! "Failed to clone repo to #{@destination}"
+    end
     # We are now located within the repo.
     @context = context.fork(:package_dir => @destination)
 

@@ -19,19 +19,21 @@ describe Dotum::RuleOptionsDSL, '#process_options' do
     end
 
     it 'should execute filters without a context' do
-      expect(base_class.process_options({:foo => :a, :bar => 1})).to eq({:foo => [:a], :bar => 3})
+      expect(base_class.process_options({:foo => :a, :bar => 1})).to eq({
+        :foo => [:a], :bar => 3
+      })
     end
 
     it 'should execute filters with a context' do
-      expect(base_class.process_options({:foo => :a, :bar => 1}, context)).to eq(
-        {:foo => [:a], :bar => 124}
-      )
+      expect(
+        base_class.process_options({:foo => :a, :bar => 1}, context)
+      ).to eq({:foo => [:a], :bar => 124})
     end
 
     it 'should skip nil values' do
-      expect(base_class.process_options({:foo => :a, :bar => nil}, context)).to eq(
-        {:foo => [:a], :bar => nil}
-      )
+      expect(
+        base_class.process_options({:foo => :a, :bar => nil}, context)
+      ).to eq({:foo => [:a], :bar => nil})
     end
 
     it 'should not modify the input' do
@@ -46,7 +48,9 @@ describe Dotum::RuleOptionsDSL, '#process_options' do
   context 'without filters' do
 
     it 'should no-op without a context' do
-      expect(base_class.process_options({:a => 1, :b => :c})).to eq({:a => 1, :b => :c})
+      expect(
+        base_class.process_options({:a => 1, :b => :c})
+      ).to eq({:a => 1, :b => :c})
     end
 
     it 'should no-op with a context' do

@@ -44,7 +44,7 @@ class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
   def update_repo
     cd @destination do
       run 'git', 'add', '--all'
-      run 'git', 'commit', '--quiet', '--allow-empty', '--message', 'Temporary Dotum Commit'
+      run 'git', 'commit', '--quiet', '--allow-empty', '--message', 'Dotum Temp'
       run 'git', 'pull', '--rebase'
       run 'git', 'reset', 'HEAD^'
     end

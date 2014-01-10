@@ -18,7 +18,9 @@ describe Dotum::Util::Path, '#glob' do
   end
 
   it 'should support * globs' do
-    expect(subject.glob('*')).to match_array([one, two, three, foo, hidden, sub])
+    expect(subject.glob('*')).to match_array([
+      one, two, three, foo, hidden, sub
+    ])
   end
 
   it 'should support **/* globs' do
@@ -32,7 +34,9 @@ describe Dotum::Util::Path, '#glob' do
   end
 
   it 'should support filtering by path' do
-    expect(subject.glob('*', &:file?)).to match_array([one, two, three, foo, hidden])
+    expect(subject.glob('*', &:file?)).to match_array([
+      one, two, three, foo, hidden
+    ])
   end
 
   it 'should return Paths' do

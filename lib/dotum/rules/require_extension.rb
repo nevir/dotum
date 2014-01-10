@@ -24,7 +24,9 @@ class Dotum::Rules::RequireExtension < Dotum::AbstractRules::OptionsBase
       @destination = Dotum::Util::Path.new(@extension_uri)
     end
 
-    failure! "Failed to clone repo to #{@destination}" unless @destination.directory?
+    unless @destination.directory?
+      failure! "Failed to clone repo to #{@destination}"
+    end
 
     # Dotum extensions are practically gems, but we don't want the overhead of
     # building a gemspec. Also, `require_extension` is the only supported means

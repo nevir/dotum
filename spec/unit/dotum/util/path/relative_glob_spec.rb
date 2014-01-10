@@ -8,21 +8,28 @@ describe Dotum::Util::Path, '#relative_glob' do
   end
 
   it 'should support * globs' do
-    expect(subject.relative_glob('*')).to match_array(['one', 'two', 'three', 'foo', '.hidden', 'sub'])
+    expect(subject.relative_glob('*')).to match_array([
+      'one', 'two', 'three', 'foo', '.hidden', 'sub'
+    ])
   end
 
   it 'should support **/* globs' do
     expect(subject.relative_glob('**/*')).to match_array([
-      'one', 'two', 'three', 'foo', '.hidden', 'sub', 'sub/four', 'sub/five', 'sub/six'
+      'one', 'two', 'three', 'foo', '.hidden', 'sub', 'sub/four', 'sub/five',
+      'sub/six'
     ])
   end
 
   it 'should support filtered ** globs' do
-    expect(subject.relative_glob('**/f*')).to match_array(['foo', 'sub/four', 'sub/five'])
+    expect(subject.relative_glob('**/f*')).to match_array([
+      'foo', 'sub/four', 'sub/five'
+    ])
   end
 
   it 'should support filtering by path' do
-    expect(subject.relative_glob('*', &:file?)).to match_array(['one', 'two', 'three', 'foo', '.hidden'])
+    expect(subject.relative_glob('*', &:file?)).to match_array([
+      'one', 'two', 'three', 'foo', '.hidden'
+    ])
   end
 
   it 'should return Strings' do
@@ -30,7 +37,9 @@ describe Dotum::Util::Path, '#relative_glob' do
   end
 
   it 'should use dot notation for paths that match up the tree' do
-    expect(subject.relative_glob('../*')).to match_array(['.', '../file', '../symlink'])
+    expect(subject.relative_glob('../*')).to match_array([
+      '.', '../file', '../symlink'
+    ])
   end
 
 end

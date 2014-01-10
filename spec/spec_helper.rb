@@ -16,7 +16,9 @@ end
 
 Spork.prefork do
   # Allow requires relative to the spec dir
-  PROJECT_ROOT = File.expand_path('../..', __FILE__) unless defined? PROJECT_ROOT
+  unless defined? PROJECT_ROOT
+    PROJECT_ROOT = File.expand_path('../..', __FILE__)
+  end
   SPEC_ROOT    = File.join(PROJECT_ROOT, 'spec')
   FIXTURE_ROOT = File.join(SPEC_ROOT, 'fixtures')
   $LOAD_PATH << SPEC_ROOT

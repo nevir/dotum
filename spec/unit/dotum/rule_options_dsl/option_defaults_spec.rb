@@ -36,7 +36,9 @@ describe Dotum::RuleOptionsDSL, '#option_defaults' do
     end
 
     it 'should merge and override inherited options' do
-      expect(child_class.option_defaults).to eq({:bar => 123, :baz => :foo, :one => 1})
+      expect(child_class.option_defaults).to eq({
+        :bar => 123, :baz => :foo, :one => 1
+      })
     end
 
   end

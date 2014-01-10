@@ -14,9 +14,9 @@ describe Dotum::Util::ANSIControl, '#ansi_color' do
   it 'should define helpers for all colors' do
     color_methods  = described_class::COLORS.map { |c| :"c_#{c}" }
     color_methods += described_class::COLORS.map { |c| :"c_bright_#{c}" }
+    all_methods    = described_class.instance_methods.map(&:to_sym)
 
-    matching_methods = described_class.instance_methods.map(&:to_sym) & color_methods
-    expect(matching_methods).to match_array(color_methods)
+    expect(all_methods & color_methods).to match_array(color_methods)
   end
 
   it 'should allow for overrides to `ansi_color`' do

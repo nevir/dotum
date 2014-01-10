@@ -7,7 +7,9 @@ class Dotum::AbstractRules::Base
   end
 
   def self.pretty
-    @pretty ||= name.split('::').last.gsub(/([^A-Z])([A-Z]+)/, '\\1_\\2').downcase
+    @pretty ||= name.split('::').last.gsub(
+      /([^A-Z])([A-Z]+)/, '\\1_\\2'
+    ).downcase
   end
 
   def initialize(context)

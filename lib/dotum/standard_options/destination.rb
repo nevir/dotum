@@ -10,7 +10,9 @@ module Dotum::StandardOptions::Destination
 
     parent_dir = @destination.dirname
     if parent_dir.exists? && !parent_dir.directory?
-      failure! "Parent path #{parent_dir} is not a directory; cannot write into it!"
+      failure!(
+        "Parent path #{parent_dir} is not a directory; cannot write into it!"
+      )
     end
 
     run 'mkdir', '-p', parent_dir unless parent_dir.directory?

@@ -21,7 +21,9 @@ class Dotum::Rules::Use < Dotum::AbstractRules::OptionsBase
     failure! "Expected #{@path} to be a directory!" unless @path.directory?
 
     rule_file = @path.join('rules.dotum')
-    rule_file = Dotum::DATA_PATH.join('default_rules.dotum') unless rule_file.file?
+    unless rule_file.file?
+      rule_file = Dotum::DATA_PATH.join('default_rules.dotum')
+    end
 
     new_context = context.fork(:package_dir => @path)
 

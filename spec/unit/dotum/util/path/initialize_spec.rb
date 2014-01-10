@@ -1,8 +1,12 @@
 describe Dotum::Util::Path, '#initialize' do
 
   it 'should normalize separators' do
-    expect(described_class.new('one/two')).to eq(File.join(Dir.pwd, 'one', 'two'))
-    expect(described_class.new('one\\two')).to eq(File.join(Dir.pwd, 'one', 'two'))
+    expect(described_class.new('one/two')).to eq(
+      File.join(Dir.pwd, 'one', 'two')
+    )
+    expect(described_class.new('one\\two')).to eq(
+      File.join(Dir.pwd, 'one', 'two')
+    )
     expect(described_class.new('a\\b/c\\d/e')).to eq(
       File.join(Dir.pwd, 'a', 'b', 'c', 'd', 'e')
     )
@@ -11,7 +15,9 @@ describe Dotum::Util::Path, '#initialize' do
   it 'should expand the given path' do
     expect(described_class.new('')).to eq(Dir.pwd)
     expect(described_class.new('~')).to eq(ENV['HOME'])
-    expect(described_class.new('foo/bar')).to eq(File.join(Dir.pwd, 'foo', 'bar'))
+    expect(described_class.new('foo/bar')).to eq(
+      File.join(Dir.pwd, 'foo', 'bar')
+    )
   end
 
   it 'should accept other Paths' do
@@ -20,7 +26,9 @@ describe Dotum::Util::Path, '#initialize' do
   end
 
   it 'should support explicit relative paths' do
-    expect(described_class.new('foo', 'bar')).to eq(File.join(Dir.pwd, 'bar', 'foo'))
+    expect(described_class.new('foo', 'bar')).to eq(
+      File.join(Dir.pwd, 'bar', 'foo')
+    )
   end
 
 end

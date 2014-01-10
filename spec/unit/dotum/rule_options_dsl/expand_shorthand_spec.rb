@@ -28,7 +28,9 @@ describe Dotum::RuleOptionsDSL, '#expand_shorthand' do
     end
 
     it 'should expand hash arguments' do
-      expect(base_class.expand_shorthand('one' => 'two')).to eq({:fizz => 'one', :buzz => 'two'})
+      expect(base_class.expand_shorthand('one' => 'two')).to eq({
+        :fizz => 'one', :buzz => 'two'
+      })
     end
 
     it 'should expand a positional argument for hash spec to the key' do
@@ -46,7 +48,9 @@ describe Dotum::RuleOptionsDSL, '#expand_shorthand' do
     end
 
     it 'should support positional and hash arguments together' do
-      expect(base_class.expand_shorthand(1, 2, 3 => 4)).to eq({:a => 1, :b => 2, :c => 3, :d => 4})
+      expect(base_class.expand_shorthand(1, 2, 3 => 4)).to eq({
+        :a => 1, :b => 2, :c => 3, :d => 4
+      })
     end
 
   end

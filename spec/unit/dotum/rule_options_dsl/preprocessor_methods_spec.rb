@@ -16,7 +16,9 @@ describe Dotum::RuleOptionsDSL, '#preprocessor_methods' do
     end
 
     it 'should propagate preprocessor methods to children' do
-      expect(child_class.preprocessor_methods).to match_array([:do_stuff, :do_things, :shared])
+      expect(child_class.preprocessor_methods).to match_array([
+        :do_stuff, :do_things, :shared
+      ])
     end
 
   end

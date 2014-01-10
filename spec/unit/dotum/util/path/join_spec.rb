@@ -6,11 +6,15 @@ describe Dotum::Util::Path, '#join' do
 
   it 'should append components' do
     expect(subject.join('one')).to eq(File.join(Dir.pwd, 'base', 'one'))
-    expect(subject.join('one', 'two')).to eq(File.join(Dir.pwd, 'base', 'one', 'two'))
+    expect(subject.join('one', 'two')).to eq(
+      File.join(Dir.pwd, 'base', 'one', 'two')
+    )
   end
 
   it 'should expand components' do
-    expect(subject.join('a/b\\c')).to eq(File.join(Dir.pwd, 'base', 'a', 'b', 'c'))
+    expect(subject.join('a/b\\c')).to eq(
+      File.join(Dir.pwd, 'base', 'a', 'b', 'c')
+    )
   end
 
   it 'should return a new Path' do
@@ -20,7 +24,9 @@ describe Dotum::Util::Path, '#join' do
   end
 
   it 'should support joining other Paths' do
-    expect(subject.join(described_class.new('~/thing'))).to eq(File.join(ENV['HOME'], 'thing'))
+    expect(subject.join(described_class.new('~/thing'))).to eq(
+      File.join(ENV['HOME'], 'thing')
+    )
   end
 
   # Unix
