@@ -1,5 +1,14 @@
+# `use_repo`
+# ==========
+
 require 'uri'
 
+# `use_repo` clones an external (and often remote) git repository, and
+# [`use`](use.html)s all of its rules.
+#
+# The repo may have a top level `rules.dotum`, which will be executed. If not,
+# any directories within the repo will be `used` (useful for collections of
+# rules).
 class Dotum::Rules::UseRepo < Dotum::AbstractRules::OptionsBase
   shorthand :repo_uri
 

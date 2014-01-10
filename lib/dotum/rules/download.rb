@@ -1,3 +1,7 @@
+# `download`
+# ==========
+
+# Downloads a file into `destination`.
 class Dotum::Rules::Download < Dotum::AbstractRules::OptionsBase
   shorthand :uri => :destination
 

@@ -1,3 +1,7 @@
+# `AbstractRules::Base`
+# =====================
+
+# Standard behavior for all rules.
 class Dotum::AbstractRules::Base
   extend Dotum::RuleOptionsDSL
   include Dotum::RuleDSL

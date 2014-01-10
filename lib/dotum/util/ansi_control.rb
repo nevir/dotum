@@ -1,3 +1,8 @@
+# `Util::ANSIControl`
+# ===================
+
+# Extend a class with `ANSIControl` to gain access to ANSI coloring and other
+# escape sequences.
 module Dotum::Util::ANSIControl
   COLORS = [:black, :red, :green, :yellow, :blue, :magenta, :cyan, :white]
 

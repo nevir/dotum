@@ -1,5 +1,12 @@
+# `require_extension`
+# ===================
+
 require 'uri'
 
+# Clones an external extension repository and loads its extension.
+#
+# Very similar to a gem, but with less overhead. Any `.rb` files under the
+# extensions `lib` directory will be loaded (in arbitrary order).
 class Dotum::Rules::RequireExtension < Dotum::AbstractRules::OptionsBase
   shorthand :extension_uri
 

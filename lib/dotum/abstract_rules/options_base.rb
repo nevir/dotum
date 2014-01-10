@@ -1,3 +1,7 @@
+# `AbstractRules::OptionsBase`
+# ============================
+
+# A rule that makes use of the [`RuleOptionsDSL`](../rule_options_dsl.html).
 class Dotum::AbstractRules::OptionsBase < Dotum::AbstractRules::Base
   def self.exec(context, *args, &block)
     options = option_defaults.merge(expand_shorthand(*args))

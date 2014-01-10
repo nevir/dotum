@@ -1,3 +1,7 @@
+# `link`
+# ======
+
+# Symlinks a file to `destination`, following standard `ln -s` rules.
 class Dotum::Rules::Link < Dotum::AbstractRules::GlobbableFiles
   private
 

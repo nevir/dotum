@@ -18,6 +18,9 @@ BracesAroundHashParameters:
   Exclude:
     - 'spec/*'
 
+CyclomaticComplexity:
+  Max: 8
+
 Documentation:
   Exclude:
     - 'spec/*'

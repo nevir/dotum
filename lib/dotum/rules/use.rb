@@ -1,3 +1,10 @@
+# `use`
+# =====
+
+# `use` executes the rules described by a particular directory.
+#
+# If that directory contains a `rules.dotum`, it will be executed. Otherwise,
+# the [default rule behavior](../../default_rules.html) will be executed.
 class Dotum::Rules::Use < Dotum::AbstractRules::OptionsBase
   shorthand :path
 

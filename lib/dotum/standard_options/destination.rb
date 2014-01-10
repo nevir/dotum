@@ -1,3 +1,8 @@
+# `destination`
+# =============
+
+# The `destination` standard option describes a destination directory (relative
+# to `target_dir`), creating it as necessary.
 module Dotum::StandardOptions::Destination
   extend Dotum::RuleOptionsDSL
 

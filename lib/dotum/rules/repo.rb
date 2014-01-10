@@ -1,3 +1,7 @@
+# `repo`
+# ======
+
+# Clones a git repo into `destination`.
 class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
   shorthand :repo_uri => :destination
 

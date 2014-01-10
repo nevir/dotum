@@ -1,3 +1,7 @@
+# `run`
+# =====
+
+# Executes a command.
 class Dotum::Rules::Run < Dotum::AbstractRules::Base
   def initialize(context, *command)
     super(context)

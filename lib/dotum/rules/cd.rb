@@ -1,3 +1,7 @@
+# `cd`
+# ====
+
+# Changes the current working directory for scripts.
 class Dotum::Rules::Cd < Dotum::AbstractRules::Base
   # Special case; we don't accept an options block.
   def initialize(context, destination, &block)
@@ -14,6 +18,7 @@ class Dotum::Rules::Cd < Dotum::AbstractRules::Base
   private
 
   def execute
+    # Should this also change `target_dir`?
     Dir.chdir(@destination, &@block)
   end
 end
