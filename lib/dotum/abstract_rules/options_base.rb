@@ -4,7 +4,7 @@ class Dotum::AbstractRules::OptionsBase < Dotum::AbstractRules::Base
     options = option_defaults.merge(expand_shorthand(*args))
     options.merge! eval_options_block(&block) if block
 
-    if errors = validate_options(options)
+    if (errors = validate_options(options))
       fail "Validation errors: #{errors.inspect}"
     end
 

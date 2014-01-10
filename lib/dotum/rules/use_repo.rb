@@ -17,7 +17,7 @@ class Dotum::Rules::UseRepo < Dotum::AbstractRules::OptionsBase
   def execute
     # Does it look like a URI?
     if URI.parse(@repo_uri).scheme
-      rule = repo @repo_uri, {:branch => @branch}
+      rule = repo @repo_uri, :branch => @branch
       @destination = rule.destination
     # Nope, we're just treating a local directory like a repo.
     else

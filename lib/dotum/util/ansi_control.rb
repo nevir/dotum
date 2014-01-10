@@ -1,5 +1,4 @@
 module Dotum::Util::ANSIControl
-
   COLORS = [:black, :red, :green, :yellow, :blue, :magenta, :cyan, :white]
 
   def ansi_color(text, code)
@@ -21,5 +20,4 @@ module Dotum::Util::ANSIControl
 
     end_eval
   end
-
 end

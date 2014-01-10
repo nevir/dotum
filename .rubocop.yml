@@ -1,17 +1,29 @@
 AllCops:
   Includes:
-    - '**/*.gemspec'
-    - '**/*.rake'
-    - '**/*.dotum'
+    - '*.gemspec'
+    - '*.rake'
+    - '*.dotum'
     - '.guardrc'
     - '.simplecov'
     - 'Gemfile'
     - 'Guardfile'
     - 'Rakefile'
   Excludes:
-    - 'extern/**'
+    - 'extern/*'
+
+# AssignmentInCondition:
+#   AllowSafeAssignment: true
+
+BracesAroundHashParameters:
+  Exclude:
+    - 'spec/*'
+
+Documentation:
+  Exclude:
+    - 'spec/*'
 
 HashSyntax:
+  # We have to support 1.8.
   EnforcedStyle: hash_rockets
 
 LineLength:
@@ -20,16 +32,22 @@ LineLength:
 MethodLength:
   Max: 20
 
-RegexpLiteral:
-  MaxSlashes: 0
+# RegexpLiteral:
+#   MaxSlashes: 0
 
 SpaceInsideHashLiteralBraces:
-  EnforcedStyleIsWithSpaces: false
+  EnforcedStyle: no_space
 
-TrivialAccessors:
-  AllowPredicates: true
-  ExactNameMatch: true
+# TrailingBlankLines:
+#   Enabled: false
 
-WordArray:
-  Enabled: false
+# TrivialAccessors:
+#   AllowPredicates: true
+#   ExactNameMatch: true
 
+# WordArray:
+#   Enabled: false
+
+# # Temp
+# LineLength:
+#   Enabled: false

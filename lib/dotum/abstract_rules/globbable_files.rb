@@ -1,14 +1,14 @@
 class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
 
   GLOB_MATCHER = /\*/
-  DIR_MATCHER  = /[\/\\]$/
+  DIR_MATCHER  = %r{[/\\]$}
 
   shorthand :source => :destination
 
   required(:source) { |v| context.package_dir.join(v) }
   standard :destination
   # By default, we ignore certain special paths, such as source control state.
-  optional :ignore_pattern, /(^|[\/\\])(\.git|\.svn)([\/\\]|$)|rules.dotum$/
+  optional :ignore_pattern, %r{(^|[/\\])(\.git|\.svn)([/\\]|$)|rules.dotum$}
 
   def self.expand_options(context, options)
     source      = options[:source]
@@ -17,12 +17,12 @@ class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
     source_is_glob = GLOB_MATCHER =~ source
     target_is_dir  = DIR_MATCHER  =~ destination if destination
     if source_is_glob && destination && !target_is_dir
-      fail 'Target path must be a directory when linking a glob expression.'
+      fail 'Destination must be a directory when linking a glob expression.'
     end
 
     sources = context.package_dir.relative_glob(source, &:file?)
     if sources.size > 1 && destination && !target_is_dir
-      fail 'Bug! Target path is a file, but we globbed multiple sources!'
+      fail 'Destination is not a directory, but we globbed multiple sources!'
     end
 
     sources.reject! { |p| options[:ignore_pattern] =~ p }
