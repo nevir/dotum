@@ -14,5 +14,4 @@ class Dotum::RuleRunner
   end
 
   attr_reader :context
-
 end

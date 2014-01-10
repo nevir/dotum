@@ -10,7 +10,6 @@
 # If configured with `some_field`, the above would result in an `OptionsContext`
 # that contains `{:some_field => 'some value'}`
 class Dotum::OptionsContext < Hash
-
   def initialize(option_configs)
     @known_options = Set.new(option_configs.keys)
   end
@@ -22,5 +21,4 @@ class Dotum::OptionsContext < Hash
 
     self[sym] = args[0]
   end
-
 end

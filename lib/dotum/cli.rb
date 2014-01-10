@@ -4,7 +4,6 @@ require 'fileutils'
 
 # Entry point and manager for the `dotum` CLI binary.
 class Dotum::CLI
-
   def self.exec(args)
     new(args).exec!
   end
@@ -37,5 +36,4 @@ class Dotum::CLI
       FileUtils.mkpath(@package_dir)
     end
   end
-
 end

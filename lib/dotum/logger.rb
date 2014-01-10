@@ -50,5 +50,4 @@ class Dotum::Logger
 
     "#{c_magenta(match[1])}#{match[2]}"
   end
-
 end

@@ -18,5 +18,4 @@ module Dotum::StandardOptions::Destination
     run 'mkdir', '-p', parent_dir unless parent_dir.directory?
   end
   register_preprocessor :preprocess_for_destination
-
 end

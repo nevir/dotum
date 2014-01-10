@@ -49,5 +49,4 @@ class Dotum::AbstractRules::Base
   def execute
     fail NotImplementedError, "#{self.class}#execute"
   end
-
 end

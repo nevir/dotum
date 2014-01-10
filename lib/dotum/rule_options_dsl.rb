@@ -3,7 +3,6 @@
 
 # The set of DSL methods available to rule definitions.
 module Dotum::RuleOptionsDSL
-
   OptionConfig = Struct.new(:filter, :validator, :default)
 
   # DSL
@@ -144,5 +143,4 @@ module Dotum::RuleOptionsDSL
 
     []
   end
-
 end

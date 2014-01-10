@@ -4,7 +4,6 @@ require 'rbconfig'
 
 # All DSL methods available to rules.
 module Dotum::RuleDSL
-
   def success!(reason = nil)
     throw :finish_rule, [:success, reason]
   end
@@ -68,5 +67,4 @@ module Dotum::RuleDSL
 
     send(sym, *args, &block)
   end
-
 end

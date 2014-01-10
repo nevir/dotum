@@ -1,7 +1,6 @@
 require 'uri'
 
 class Dotum::Rules::UseRepo < Dotum::AbstractRules::OptionsBase
-
   shorthand :repo_uri
 
   required :repo_uri
@@ -54,5 +53,4 @@ class Dotum::Rules::UseRepo < Dotum::AbstractRules::OptionsBase
     # In legacy mode, we just symlink everything
     link '**/*'
   end
-
 end

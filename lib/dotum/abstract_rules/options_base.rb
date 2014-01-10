@@ -1,5 +1,4 @@
 class Dotum::AbstractRules::OptionsBase < Dotum::AbstractRules::Base
-
   def self.exec(context, *args, &block)
     options = option_defaults.merge(expand_shorthand(*args))
     options.merge! eval_options_block(&block) if block
@@ -24,5 +23,4 @@ class Dotum::AbstractRules::OptionsBase < Dotum::AbstractRules::Base
       instance_variable_set(:"@#{option}", value)
     end
   end
-
 end

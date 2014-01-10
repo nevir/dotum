@@ -1,5 +1,4 @@
 class Dotum::Rules::Use < Dotum::AbstractRules::OptionsBase
-
   shorthand :path
 
   required(:path) { |v| package_dir.join(v) }
@@ -29,5 +28,4 @@ class Dotum::Rules::Use < Dotum::AbstractRules::OptionsBase
 
     Dotum::RuleRunner.eval(new_context, rule_file.read, rule_file)
   end
-
 end

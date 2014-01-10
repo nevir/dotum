@@ -1,7 +1,6 @@
 require 'uri'
 
 class Dotum::Rules::RequireExtension < Dotum::AbstractRules::OptionsBase
-
   shorthand :extension_uri
 
   required :extension_uri
@@ -38,5 +37,4 @@ class Dotum::Rules::RequireExtension < Dotum::AbstractRules::OptionsBase
       Kernel.load(path)
     end
   end
-
 end

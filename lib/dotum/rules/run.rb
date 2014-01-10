@@ -1,5 +1,4 @@
 class Dotum::Rules::Run < Dotum::AbstractRules::Base
-
   def initialize(context, *command)
     super(context)
 
@@ -17,5 +16,4 @@ class Dotum::Rules::Run < Dotum::AbstractRules::Base
 
     failure! unless $CHILD_STATUS.success?
   end
-
 end

@@ -10,7 +10,6 @@ module Dotum
   # Each autoloadable parent module/class only needs to to `extend` the
   # `AutoloadConvention` to bootstrap this behavior.
   module AutoloadConvention
-
     # `autoload` is dead, and we don't want to deal with its removal in 2.0,
     # so here's a thread-unsafe poor man's solution.
     def const_missing(sym)
@@ -26,6 +25,5 @@ module Dotum
 
       const_defined?(sym) ? const_get(sym) : super
     end
-
   end
 end

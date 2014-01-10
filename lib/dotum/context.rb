@@ -8,7 +8,6 @@
 # Every rule is invoked with a context, and may [`fork`](#fork) the context as
 # necessary to modify it (Contexts are immutable).
 class Dotum::Context
-
   def initialize(attributes = nil)
     set_attributes(attributes || {})
 
@@ -60,5 +59,4 @@ class Dotum::Context
       end
     end
   end
-
 end

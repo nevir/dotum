@@ -1,5 +1,4 @@
 class Dotum::Rules::Link < Dotum::AbstractRules::GlobbableFiles
-
   private
 
   def execute
@@ -16,5 +15,4 @@ class Dotum::Rules::Link < Dotum::AbstractRules::GlobbableFiles
 
     run 'ln', '-s', @source, @destination
   end
-
 end

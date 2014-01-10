@@ -1,5 +1,4 @@
 class Dotum::Rules::Download < Dotum::AbstractRules::OptionsBase
-
   shorthand :uri => :destination
 
   required :uri
@@ -26,5 +25,4 @@ class Dotum::Rules::Download < Dotum::AbstractRules::OptionsBase
     run 'chown', @owner, @destination if @owner
     run 'chgrp', @group, @destination if @group
   end
-
 end

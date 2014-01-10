@@ -1,5 +1,4 @@
 class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
-
   GLOB_MATCHER = /\*/
   DIR_MATCHER  = %r{[/\\]$}
 
@@ -45,5 +44,4 @@ class Dotum::AbstractRules::GlobbableFiles < Dotum::AbstractRules::OptionsBase
   def pretty_subject
     "#{@destination.pretty} (#{@source.pretty})"
   end
-
 end

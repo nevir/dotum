@@ -1,5 +1,4 @@
 class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
-
   shorthand :repo_uri => :destination
 
   required :repo_uri
@@ -59,5 +58,4 @@ class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
   def is_local?
     @repo_uri.start_with? 'file://'
   end
-
 end
