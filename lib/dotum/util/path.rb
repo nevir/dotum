@@ -2,10 +2,10 @@
 class Dotum::Util::Path
   include Comparable
 
-  ABSOLUTE_PATH_MATCHER = /^(~?\/|\w+:\\)/
+  ABSOLUTE_PATH_MATCHER = %r{^(~?/|\w+:\\)}
 
   def initialize(path, relative = nil)
-    path = path.to_str.gsub(/[\/\\]/, File::Separator)
+    path = path.to_str.gsub(%r{[/\\]}, File::Separator)
 
     @path = File.expand_path(path, relative)
   end

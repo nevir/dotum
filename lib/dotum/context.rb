@@ -9,7 +9,7 @@
 # necessary to modify it (Contexts are immutable).
 class Dotum::Context
   def initialize(attributes = nil)
-    set_attributes(attributes || {})
+    write_attributes(attributes || {})
 
     @depth ||= 0
   end
@@ -47,7 +47,7 @@ class Dotum::Context
 
   private
 
-  def set_attributes(attributes)
+  def write_attributes(attributes)
     attributes.each_pair do |key, value|
       case key
       when :package_dir then @package_dir = Dotum::Util::Path.new(value)

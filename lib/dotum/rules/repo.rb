@@ -17,7 +17,7 @@ class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
     @destination ||= default_destination
     @repo_exists = @destination.join('.git').directory?
 
-    if !is_local? && context.no_remote?
+    if !local? && context.no_remote?
       if @repo_exists
         skip! 'Remote interactions are disabled.'
       else
@@ -55,7 +55,7 @@ class Dotum::Rules::Repo < Dotum::AbstractRules::OptionsBase
     context.state_dir.join('repo', basename)
   end
 
-  def is_local?
+  def local?
     @repo_uri.start_with? 'file://'
   end
 end

@@ -11,8 +11,8 @@ AllCops:
   Excludes:
     - 'extern/*'
 
-# AssignmentInCondition:
-#   AllowSafeAssignment: true
+AmbiguousOperator:
+  Enabled: false
 
 BracesAroundHashParameters:
   Exclude:
@@ -32,22 +32,15 @@ LineLength:
 MethodLength:
   Max: 20
 
-# RegexpLiteral:
-#   MaxSlashes: 0
+RegexpLiteral:
+  MaxSlashes: 0
 
 SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
-# TrailingBlankLines:
-#   Enabled: false
+TrivialAccessors:
+  AllowPredicates: true
+  ExactNameMatch: true
 
-# TrivialAccessors:
-#   AllowPredicates: true
-#   ExactNameMatch: true
-
-# WordArray:
-#   Enabled: false
-
-# # Temp
-# LineLength:
-#   Enabled: false
+WordArray:
+  Enabled: false
