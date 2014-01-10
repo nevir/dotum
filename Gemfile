@@ -10,20 +10,19 @@ group :test do
   gem 'rspec', '~> 2.14'
 
   # The preferred code mutation library.
-  gem 'mutant', '~> 0.3.rc', :platforms => [:ruby_19, :ruby_20]
-
-  # Temporary until mutant depends on 0.1.3+
-  gem 'unparser', '>= 0.1.3'
+  gem 'mutant', '~> 0.3', :platforms => [:ruby_19, :ruby_20]
 
   # Cover all the things.
-  gem 'simplecov', '~> 0.7'
+  gem 'simplecov', '~> 0.8'
 
   # Code coverage in badge form.
   gem 'coveralls', '~> 0.7'
 
   # Style enforcement & linting.
-  # gem 'rubocop', '~> 0.14.2', :platforms => [:ruby_19, :ruby_20]
-  gem 'rubocop', :git => 'https://github.com/bbatsov/rubocop', :platforms => [:ruby_19, :ruby_20]
+  # gem 'rubocop', '~> 0.17.0', :platforms => [:ruby_19, :ruby_20]
+  gem 'rubocop', :git => 'https://github.com/bbatsov/rubocop', :platforms => [
+    :ruby_19, :ruby_20
+  ]
 end
 
 group :debugging do
@@ -36,13 +35,16 @@ end
 
 group :guard do
   # A generic file system event handler; spin it up and see the tests fly.
-  gem 'guard', '~> 2.0'
+  gem 'guard', '~> 2.2'
+
+  # Guard configuration to reload when the gem bundle changes
+  gem 'guard-bundler', '~> 2.0'
 
   # Guard configuration to manage our spork drb environments.
   gem 'guard-spork', '~> 1.5'
 
   # Guard configuration & hooks for rspec.
-  gem 'guard-rspec', '~> 4.0'
+  gem 'guard-rspec', '~> 4.2'
 
   # Guard configuration for rubocop style & lint checks.
   gem 'guard-rubocop', '~> 1.0', :platforms => [:ruby_19, :ruby_20]
