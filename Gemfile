@@ -90,7 +90,4 @@ end
 platforms :rbx do
   # The Ruby standard library.
   gem 'rubysl', '~> 2.0'
-
-  # YAML support for Rubinius.
-  gem 'psych', '~> 2.0'
 end
