@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gemspec
 
+# What you're using right here.
+gem 'bundler', '~> 1.5'
+
 # No gem would be complete without rake tasks
 gem 'rake', '~> 10.1'
 
@@ -63,9 +66,6 @@ end
 
 platforms :ruby_19, :ruby_20 do
   group :test do
-    # The preferred code mutation library.
-    gem 'mutant', '~> 0.3'
-
       # Style enforcement & linting.
     gem 'rubocop', '~> 0.18'
 
@@ -77,4 +77,9 @@ platforms :ruby_19, :ruby_20 do
     # Guard configuration for rubocop style & lint checks.
     gem 'guard-rubocop', '~> 1.0'
   end
+end
+
+platforms :ruby_20, :ruby_21 do
+  # The preferred code mutation library.
+  gem 'mutant', '~> 0.3'
 end
