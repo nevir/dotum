@@ -19,9 +19,9 @@ describe Dotum::AbstractRules::Base, '.exec' do
 
   it 'should pass through all arguments to initialize' do
     context = Dotum::Context.new
-    expect(subject.exec(context, 1, 2, &:asdf)).to eq([
-      context, [1, 2], :asdf.to_proc
-    ])
+    block = :asdf.to_proc
+
+    expect(subject.exec(context, 1, 2, &block)).to eq([context, [1, 2], block])
   end
 
 end
