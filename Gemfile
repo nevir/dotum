@@ -25,6 +25,9 @@ group :debugging do
 
   # Don't leave home without a debugger!
   gem 'debugger', '~> 1.6', :platforms => :mri
+
+  # Or Rubinius' debugging tools
+  gem 'rubinius-developer_tools', '~> 2.0', :platforms => :rbx
 end
 
 group :guard do
@@ -82,4 +85,12 @@ end
 platforms :ruby_20, :ruby_21 do
   # The preferred code mutation library.
   gem 'mutant', '~> 0.3'
+end
+
+platforms :rbx do
+  # The Ruby standard library.
+  gem 'rubysl', '~> 2.0'
+
+  # YAML support for Rubinius.
+  gem 'psych', '~> 2.0'
 end
