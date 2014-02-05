@@ -1,4 +1,4 @@
-describe Dotum::RuleOptionsDSL, '#preprocessor_methods' do
+describe Dotum::RuleOptionsDSL, '#shorthand' do
   include_context 'options DSL'
 
   it 'should set shorthand_config' do

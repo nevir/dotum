@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.homepage =  'https://github.com/nevir/dotum'
   gem.license  =  'MIT'
 
-  gem.version  = Dotum::VERSION
+  gem.version  = Dotum::Version.string
   gem.platform = Gem::Platform::RUBY
 
   gem.files      = `git ls-files`.split("\n")

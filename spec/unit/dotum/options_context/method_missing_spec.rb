@@ -3,7 +3,7 @@ describe Dotum::OptionsContext, '#method_missing' do
   subject do
     described_class.new(
       :one => Dotum::RuleOptionsDSL::OptionConfig.new,
-      :two => Dotum::RuleOptionsDSL::OptionConfig.new,
+      :two => Dotum::RuleOptionsDSL::OptionConfig.new
     )
   end
 

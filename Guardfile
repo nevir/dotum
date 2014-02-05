@@ -6,7 +6,7 @@ guard :spork, :rspec_port => 2772 do
   SPEC_ENVIRONMENT_FILES = [
     '.rspec',
     %r{^spec/.*_helper\.rb$},
-    %r{^spec/common/.*\.rb$},
+    %r{^spec/common/.*\.rb$}
   ]
 
   SPEC_ENVIRONMENT_FILES.each do |pattern|

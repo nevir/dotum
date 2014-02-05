@@ -19,10 +19,10 @@ group :test do
   gem 'coveralls', '~> 0.7'
 
   # Style enforcement & linting.
-  # gem 'rubocop', '~> 0.17.0', :platforms => [:ruby_19, :ruby_20]
-  gem 'rubocop', :git => 'https://github.com/bbatsov/rubocop', :platforms => [
-    :ruby_19, :ruby_20
-  ]
+  gem 'rubocop', '~> 0.18', :platforms => [:ruby_19, :ruby_20]
+
+  # RSpec style enforcement & linting.
+  gem 'rubocop-rspec', '~> 0.18', :platforms => [:ruby_19, :ruby_20]
 end
 
 group :debugging do
