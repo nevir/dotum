@@ -11,9 +11,13 @@ class Dotum::AbstractRules::Base
   end
 
   def self.pretty
-    @pretty ||= name.split('::').last.gsub(
-      /([^A-Z])([A-Z]+)/, '\\1_\\2'
-    ).downcase
+    @pretty ||= begin
+      result = name.split('::').last
+      result.gsub! /([^A-Z])([A-Z]+)/,       '\\1_\\2' # OneTwo -> One_Two
+      result.gsub! /([A-Z]+)([A-Z][^A-Z]+)/, '\\1_\\2' # ABCOne -> ABC_One
+
+      result.downcase
+    end
   end
 
   def initialize(context)
@@ -21,7 +25,7 @@ class Dotum::AbstractRules::Base
   end
 
   def exec
-    context.logger.start_rule(self)
+    context.logger.start_rule(self) if context.logger
 
     status, reason = catch(:finish_rule) do
       preprocess
@@ -30,7 +34,7 @@ class Dotum::AbstractRules::Base
       success!
     end
 
-    context.logger.finish_rule(self, status, reason)
+    context.logger.finish_rule(self, status, reason) if context.logger
     fail "Rule failed: #{reason}" if status == :failure
 
     self
