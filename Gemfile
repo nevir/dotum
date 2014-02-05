@@ -56,6 +56,11 @@ group :guard do
   gem 'rb-notifu', '~> 0.0'
 end
 
+platforms :ruby_18 do
+  # rest-client (via coveralls) has an unbounded requirement on mime-types.
+  gem 'mime-types', '~> 1.25'
+end
+
 platforms :ruby_19, :ruby_20 do
   group :test do
     # The preferred code mutation library.
