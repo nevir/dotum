@@ -9,20 +9,11 @@ group :test do
   # Our preferred unit testing library.
   gem 'rspec', '~> 2.14'
 
-  # The preferred code mutation library.
-  gem 'mutant', '~> 0.3', :platforms => [:ruby_19, :ruby_20]
-
   # Cover all the things.
   gem 'simplecov', '~> 0.8'
 
   # Code coverage in badge form.
   gem 'coveralls', '~> 0.7'
-
-  # Style enforcement & linting.
-  gem 'rubocop', '~> 0.18', :platforms => [:ruby_19, :ruby_20]
-
-  # RSpec style enforcement & linting.
-  gem 'rubocop-rspec', '~> 0.18', :platforms => [:ruby_19, :ruby_20]
 end
 
 group :debugging do
@@ -46,9 +37,6 @@ group :guard do
   # Guard configuration & hooks for rspec.
   gem 'guard-rspec', '~> 4.2'
 
-  # Guard configuration for rubocop style & lint checks.
-  gem 'guard-rubocop', '~> 1.0', :platforms => [:ruby_19, :ruby_20]
-
   # File system event hooks for OS X.
   gem 'rb-fsevent', '~> 0.9'
 
@@ -66,4 +54,22 @@ group :guard do
 
   # notifu adapter (Windows).
   gem 'rb-notifu', '~> 0.0'
+end
+
+platforms :ruby_19, :ruby_20 do
+  group :test do
+    # The preferred code mutation library.
+    gem 'mutant', '~> 0.3'
+
+      # Style enforcement & linting.
+    gem 'rubocop', '~> 0.18'
+
+    # RSpec style enforcement & linting.
+    gem 'rubocop-rspec', '~> 0.18'
+  end
+
+  group :guard do
+    # Guard configuration for rubocop style & lint checks.
+    gem 'guard-rubocop', '~> 1.0'
+  end
 end
