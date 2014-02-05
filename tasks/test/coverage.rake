@@ -3,11 +3,12 @@ namespace :test do
   desc 'Run tests with code coverage'
   task :coverage do
     prev_coverage = ENV['COVERAGE']
-    prev_full_run = ENV['FULL_COVERAGE_RUN']
+    prev_preload = ENV['PRELOAD_ALL']
     ENV['COVERAGE'] = 'yes'
-    ENV['FULL_COVERAGE_RUN'] = 'yes'
+    ENV['PRELOAD_ALL'] = 'yes'
 
     begin
+      # preload_all!
       Rake::Task['test:unit'].execute
 
       if RUBY_PLATFORM.include? 'darwin'
@@ -15,7 +16,7 @@ namespace :test do
       end
 
     ensure
-      ENV['FULL_COVERAGE_RUN'] = prev_full_run
+      ENV['PRELOAD_ALL'] = prev_preload
       ENV['COVERAGE'] = prev_coverage
     end
   end

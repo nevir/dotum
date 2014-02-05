@@ -19,6 +19,7 @@ Spork.prefork do
   unless defined? PROJECT_ROOT
     PROJECT_ROOT = File.expand_path('../..', __FILE__)
   end
+  LIB_ROOT     = File.join(PROJECT_ROOT, 'lib')
   SPEC_ROOT    = File.join(PROJECT_ROOT, 'spec')
   FIXTURE_ROOT = File.join(SPEC_ROOT, 'fixtures')
   $LOAD_PATH << SPEC_ROOT
@@ -60,19 +61,21 @@ Spork.each_run do
       require 'coveralls'
       Coveralls.wear!
     end
-
-    # Ensure accurate coverage by loading everything if we're going to be doing
-    # a full run.
-    if ENV['FULL_COVERAGE_RUN']
-      lib_root = File.join(PROJECT_ROOT, 'lib')
-      Dir["#{lib_root}/**/*.rb"].sort.each do |path|
-        require path[(lib_root.size + 1)...-3]
-      end
-    end
   end
 
   # Because we're an autoloading lib, just require the root up front.
   #
   # Must be loaded _after_ `simplecov`, otherwise it won't pick up on requires.
   require 'dotum'
+
+  # Ensure accurate coverage by loading everything if we're going to be doing a
+  # full run.
+  if ENV['PRELOAD_ALL']
+    require 'pathname'
+
+    lib_root = Pathname.new(PROJECT_ROOT).join('lib')
+    Dir["#{lib_root}/**/*.rb"].each do |file|
+      require Pathname.new(file).relative_path_from(lib_root).to_s[0...-3]
+    end
+  end
 end
