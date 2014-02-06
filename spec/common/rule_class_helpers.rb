@@ -1,11 +1,14 @@
+module RuleClassHelpers; end
+module RuleClassHelpers::Scope; end
+
 shared_context 'rule class helpers' do
   def new_rule_class(name)
-    scope = Module.new
-    scope.module_eval <<-end_module, __FILE__, __LINE__
-      class #{name} < #{described_class}; end
-    end_module
-
-    scope.const_get(name)
+    RuleClassHelpers::Scope.const_set(name, Class.new(described_class))
   end
 
+  after(:each) do
+    RuleClassHelpers::Scope.constants.each do |const|
+      RuleClassHelpers::Scope.send(:remove_const, const)
+    end
+  end
 end

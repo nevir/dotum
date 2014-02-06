@@ -44,9 +44,9 @@ Spork.prefork do
     end
 
     # Time out specs (particularly useful for mutant)
-    config.around(:each) do |spec|
-      timeout(0.5) { spec.run }
-    end
+    # config.around(:each) do |spec|
+    #   timeout(0.5) { spec.run }
+    # end
   end
 end
 

@@ -90,4 +90,7 @@ end
 platforms :rbx do
   # The Ruby standard library.
   gem 'rubysl', '~> 2.0'
+
+  # For rubocop.
+  gem 'racc', '~> 1.4'
 end
