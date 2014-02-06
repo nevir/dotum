@@ -1,4 +1,5 @@
 language: ruby
+cache: bundler
 bundler_args: --without debugging guard
 script: bundle exec rake test:ci
 rvm:
@@ -6,9 +7,10 @@ rvm:
   - 1.9.2
   - 1.9.3
   - 2.0.0
+  - 2.1.0
   - rbx
   - jruby-18mode
   - jruby-19mode
   - jruby-20mode
+  - jruby-21mode
   - ree
-cache: bundler
