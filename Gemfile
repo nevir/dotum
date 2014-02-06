@@ -62,12 +62,12 @@ group :guard do
   gem 'rb-notifu', '~> 0.0'
 end
 
-platforms :ruby_18 do
+platforms :ruby_18, :jruby_18 do
   # rest-client (via coveralls) has an unbounded requirement on mime-types.
   gem 'mime-types', '~> 1.25'
 end
 
-platforms :ruby_19, :ruby_20 do
+platforms :ruby_19, :ruby_20, :ruby_21 do
   group :test do
       # Style enforcement & linting.
     gem 'rubocop', '~> 0.18'
